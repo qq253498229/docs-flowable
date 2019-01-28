@@ -1,11 +1,11 @@
 #!/bin/bash
 
-asciidoctor -a stylesheet=../base/flowable.css -o output/index.html index-html.adoc
-asciidoctor -a stylesheet=../base/flowable.css -o output/migration.html migration.adoc
+asciidoctor -a stylesheet=../base/flowable.css -o ../index.html index-html.adoc
+asciidoctor -a stylesheet=../base/flowable.css -o ../migration.html migration.adoc
 
-rm -rf output/images
-mkdir output/images
-cp -r images output
+rm -rf ../images
+mkdir ../images
+cp -r images ..
 
 ## Copy Base Images
-cp -r ../base/images output/
+cp -r ../base/images ../
