@@ -1,0 +1,7 @@
+version: "3"
+services:
+  app:
+    image: test:latest
+    build: .
+    ports:
+      - "12883:80"
