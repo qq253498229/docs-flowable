@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.7.1">
+<meta name="generator" content="Asciidoctor 1.5.8">
 <title>Flowable DOCS 中文 (v 6.4.1)</title>
 <style>
 
@@ -499,7 +499,7 @@ Flowable 流程引擎允许您部署BPMN 2.0流程定义文件（用于定义流
 <div class="paragraph">
 <p>首先，我们通过 <em>File &#8594; New &#8594; Other &#8594; Maven Project</em> 的方式创建一个Maven项目</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/getting.started.new.maven.png" alt="getting.started.new.maven">
 </div>
@@ -507,7 +507,7 @@ Flowable 流程引擎允许您部署BPMN 2.0流程定义文件（用于定义流
 <div class="paragraph">
 <p>在下一张截图中，我们选择 <em><em>create a simple project (跳过maven结构脚手架部分)</em></em></p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/getting.started.new.maven2.png" alt="getting.started.new.maven2">
 </div>
@@ -515,7 +515,7 @@ Flowable 流程引擎允许您部署BPMN 2.0流程定义文件（用于定义流
 <div class="paragraph">
 <p>然后填写 <em>'Group Id'</em> 和 <em>'Artifact id'</em>:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/getting.started.new.maven3.png" alt="getting.started.new.maven3">
 </div>
@@ -633,7 +633,7 @@ public class HolidayRequest {
 <p>现在可以启动它了。
 最简单的方式是在 Eclipse 中右键这个类然后选择 <em>Run As &#8594; Java Application</em>:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/getting.started.run.main.png" alt="getting.started.run.main">
 </div>
@@ -641,7 +641,7 @@ public class HolidayRequest {
 <div class="paragraph">
 <p>应用会正常启动，但是，控制台中也没有显示什么有用的信息，仅有一条状态类消息，这是因为还没有配置日志:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/getting.started.console.logging.png" alt="getting.started.console.logging">
 </div>
@@ -680,7 +680,7 @@ log4j.appender.CA.layout.ConversionPattern= %d{hh:mm:ss,SSS} [%t] %-5p %c %x - %
 <div class="paragraph">
 <p>重新运行应用程序。现在，您就可以看到有关启动引擎和创建数据库结构的日志信息了：</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/getting.started.console.logging2.png" alt="getting.started.console.logging2">
 </div>
@@ -692,61 +692,69 @@ log4j.appender.CA.layout.ConversionPattern= %d{hh:mm:ss,SSS} [%t] %-5p %c %x - %
 <div class="sect3">
 <h4 id="_部署流程定义">2.3.2. 部署流程定义</h4>
 <div class="paragraph">
-<p>The process we&#8217;ll build is a very simple holiday request process. The Flowable engine expects processes to be defined in the BPMN 2.0 format, which is an XML standard that is widely accepted in the industry.
-In Flowable terminology, we speak about this as a <strong>process definition</strong>. From a <em>process definition</em>, many <strong>process instances</strong> can be started. Think of the <em>process definition</em> as the blueprint for many executions
-of the process. In this particular case, the <em>process definition</em> defines the different steps involved in requesting holidays, while one <em>process instance</em> matches the request for a holiday by one particular employee.</p>
+<p>我们即将构建一个非常简单的请假流程。
+Flowable引擎推荐以BPMN 2.0的格式定义流程，这是业界广泛接受的XML标准。
+在Flowable术语中，我们将其称为 <strong>process definition</strong> (流程定义)。
+从一个 <strong>process definition</strong> 中可以启动许多 <strong>process instances</strong> (流程实例)。
+可以认为 <em>process definition</em> 是多个流程执行过程的蓝图。
+意思就是 <em>process definition</em> 定义了多种不同步骤的请假流程，而一个 <em>process instance</em> 就是其中的一个特定员工请假流程。</p>
 </div>
 <div class="paragraph">
-<p>BPMN 2.0 is stored as XML, but it has a visualization part too: it defines in a standard way how each different step type (a human task, an automatic service call, and so on) is represented and how to connect
-these different steps to each other. Through this, the BPMN 2.0 standard allows technical and business people to communicate about business processes in a way that both parties understand.</p>
+<p>BPMN 2.0存储为XML，但它也有一个可视化部分: 它以标准方式定义了每个不同步骤类型（人工任务，自动调用服务等）以及如何将这些不同的步骤连接到一起。
+通过这种方式，BPMN 2.0标准允许技术人员和业务人员以双方都理解的方式交流业务流程。</p>
 </div>
 <div class="paragraph">
-<p>The process definition we&#8217;ll use is the following:</p>
+<p>我们将使用的流程定义如下:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/getting.started.bpmn.process.png" alt="getting.started.bpmn.process">
 </div>
 </div>
 <div class="paragraph">
-<p>The process should be quite self-explanatory, but for clarity&#8217;s sake let&#8217;s describe the different bits:</p>
+<p>这个流程应该不用说就能懂，但为了清楚起见，我们来描述以下每个的点:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>We assume the process is started by providing some information, such as the employee name, the amount of holiday requested and a description. Of course, this could be modeled as a separate first step in the process.
-However, by having it as <em>input data</em> for the process, a process instance is only actually created when a real request has been made. In the alternative case, a user could change his mind and cancel before submitting, yet the process instance would now be there.
-In some scenarios this could be valuable information (for example, how many times is a request started, but not finished), depending on the business goal.</p>
+<p>我们假设通过提供一些信息来启动流程，例如员工姓名，请假天数和描述。
+当然，这可以作为该流程中单独的第一步进行建模。
+但是，通过将其作为进程的输入数据，只有在发出实际请求时才会实际创建流程实例。
+在另一种情况下，用户可以在提交之前改变主意并取消，但流程实例还会放在那里。
+在某些情况下，这可能是有价值的信息（例如，请求已启动但未完成的次数），具体取决于具体的业务需求。</p>
 </li>
 <li>
-<p>The circle on the left is called a <strong>start event</strong>. It&#8217;s the starting point of a process instance.</p>
+<p>最左边的圆圈称为 <strong>start event</strong> (开始事件)。 它是流程实例的起点。</p>
 </li>
 <li>
-<p>The first rectangle is a <strong>user task</strong>. This is a step in the process that a human user has to perform. In this case, the manager needs to approve or reject the request.</p>
+<p>第一个矩形是一个 <strong>user task</strong> (用户任务)。 这是流程中用户必须执行的一个步骤。 在这种情况下，经理需要批准或拒绝该请求。</p>
 </li>
 <li>
-<p>Depending on what the manager decides, the <strong>exclusive gateway</strong> (the diamond shape with the cross) will route the process instance to either the approval or the rejection path.</p>
+<p>根据经理决定的内容，<strong>exclusive gateway</strong> (排他网关，就是那个带叉的菱形）将流程实例路由到批准或拒绝路径。</p>
 </li>
 <li>
-<p>If approved, we have to register the request in some external system, which is followed by a user task again for the original employee that notifies them of the decision.
-This could, of course, be replaced by an email.</p>
+<p>如果批准了，我们必须在某个外部系统中注册该请求，然后再向原始员工发送用户任务，通知他们该消息。 当然也可以用电子邮件代替。</p>
 </li>
 <li>
-<p>If rejected, an email is sent to the employee informing them of this.</p>
+<p>如果被拒绝，将向员工发送一封电子邮件来通知他们。</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Typically, such a <em>process definition</em> is modeled with a visual modeling tool, such as the Flowable Designer (Eclipse) or the Flowable Modeler (web application).</p>
+<p>通常，这样的 <em>process definition</em> 可以使用可视化建模工具进行建模，例如Flowable Designer（Eclipse插件）或Flowable Modeler（Web应用程序）。</p>
 </div>
 <div class="paragraph">
-<p>Here, however, we&#8217;re going to write the XML directly to familiarize ourselves with BPMN 2.0 and its concepts.</p>
+<p>在这里，我们将直接编写XML以帮助大家熟悉BPMN 2.0及其概念。</p>
 </div>
 <div class="paragraph">
-<p>The BPMN 2.0 XML corresponding to the diagram above is shown below. Note that this is only the <em>process part</em>. If you&#8217;d used a graphical modeling tool, the underlying XML file also contains the <em>visualization</em> part that describes the graphical information, such as the coordinates of the various elements of the process definition (all graphical information is contained in the <em>BPMNDiagram</em> tag in the XML, which is a child element of the <em>definitions</em> tag).</p>
+<p>与上图对应的BPMN 2.0 XML如下所示。
+请注意，这只是流程部分。
+如果您使用了图形建模工具，
+则基础XML文件还包含描述图形信息的 <em>可视化</em> 部分，
+例如流程定义的各个元素的坐标（所有图形信息都包含在XML中的 <em>BPMNDiagram</em> 标签中，这是 <em>definitions</em> 标签的子元素）。</p>
 </div>
 <div class="paragraph">
-<p>Save the following XML in a file named <em>holiday-request.bpmn20.xml</em> in the <em>src/main/resources</em> folder.</p>
+<p>将下面的XML文件保存在 <em>src/main/resources</em> 路径下名为 <em>holiday-request.bpmn20.xml</em> 的文件中。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -807,35 +815,48 @@ This could, of course, be replaced by an email.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Lines 2 to 11 look a bit daunting, but it&#8217;s the same as you&#8217;ll see in almost every process definition. It&#8217;s kind of <em>boilerplate</em> stuff that&#8217;s needed to be fully compatible with the BPMN 2.0 standard specification.</p>
+<p>第2行到第11行看上去有点吓人，但它与您在几乎所有流程定义中看到的都相同。 这是需要与BPMN 2.0标准规范完全兼容的样板材料。</p>
 </div>
 <div class="paragraph">
-<p>Every step (in BPMN 2.0 terminology, <strong><em>activity</em></strong>) has an <em>id</em> attribute that gives it a unique identifier in the XML file. All <em>activities</em> can have an optional name too, which increases the readability of the visual diagram, of course.</p>
+<p>每个步骤（在BPMN 2.0术语中称为 <strong><em>activity</em></strong>）都有一个 <em>id</em> 属性，在XML文件中为其提供唯一标识符。
+所有 <em>activities</em> 也可以有一个可选名称，这样会增加可视化图表的可读性。</p>
 </div>
 <div class="paragraph">
-<p>The <em>activities</em> are connected by a <strong>sequence flow</strong>, which is a directed arrow in the visual diagram. When executing a process instance, the execution will flow from the <em>start event</em> to the next <em>activity</em>, following the <em>sequence flow</em>.</p>
+<p><em>activities</em> 通过 <strong>sequence flow</strong> (顺序流)进行连接，顺序流就是可视化试图中的有向箭头。
+在执行流程实例时，流程会根据 <em>sequence flow</em> 的指向，从 <em>start event</em> 前往下一个 <em>activity</em> 。</p>
 </div>
 <div class="paragraph">
-<p>The <em>sequence flows</em> leaving the <em>exclusive gateway</em> (the diamond shape with the X) are clearly special: both have a <em>condition</em> defined in the form of an <em>expression</em> (see line 25 and 32). When the process instance execution reaches this <em>gateway</em>, the <em>conditions</em> are evaluated and the first that resolves to <em>true</em> is taken. This is what the <em>exclusive</em> stands for here: only one is selected. Other types of gateways are, of course, possible if different routing behavior is needed.</p>
+<p>离开 <em>exclusive gateway</em> （带叉的菱形） 的 <em>sequence flows</em> 显然是特殊的:
+两者都具有以 <em>expression</em> (表达式)形式定义的 <em>condition</em> (条件)(参见第25和32行)。
+当流程实例执行到此 <em>gateway</em> (网关)时，
+将评估 <em>conditions</em> 并采用解析为 <em>true</em> 的第一个条件。
+这就是这里的 <em>exclusive</em> ：只选择一个继续执行。
+当然，如果需要不同行为的路由，其他类型的网关也是可以的。</p>
 </div>
 <div class="paragraph">
-<p>The condition written here as an <em>expression</em> is of the form <em>${approved}</em>, which is a shorthand for <em>${approved == true}</em>. The variable <em>approved</em> is called a <strong>process variable</strong>. A <em>process variable</em> is a persistent bit of data that is stored together with the process instance and can be used during the lifetime of the process instance. In this case, it does mean that we will have to set this <em>process variable</em> at a certain point (when the manager user task is submitted or, in Flowable terminology, <em>completed</em>) in the process instance, as it&#8217;s not data that is available when the process instance starts.</p>
+<p>此处作为 <em>expression</em> 写入的条件格式为 <em>${approved}</em>，
+其实就是 <em>${approved == true}</em> 的简写。
+<em>approved</em> 的变量称为 <strong>process variable</strong> (流程变量) 。
+<em>process variable</em> 是与流程实例一起存储的持久化数据，可以在流程实例的剩余生命周期中使用。
+在这个例子中，意思就是我们必须在流程实例中的某个点（当经理已经提交或者在Flowable术语中称为 <em>completed</em> 的时候）设置这个 <em>process variable</em>，
+因此在流程实例刚启动时它是不可用的。</p>
 </div>
 <div class="paragraph">
-<p>Now we have the process BPMN 2.0 XML file, we next need to <strong><em>deploy</em></strong> it to the engine. <em>Deploying</em> a process definition means that:</p>
+<p>现在我们已经有流程BPMN 2.0 XML文件了，接下来需要将它 <strong><em>deploy</em></strong> (部署)到引擎中。 <em>Deploying</em> 流程定义意味着：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>the process engine will store the XML file in the database, so it can be retrieved whenever needed</p>
+<p>流程引擎会将XML文件存储在数据库中，因此可以在需要时查询它</p>
 </li>
 <li>
-<p>the process definition is parsed to an internal, executable object model, so that <em>process instances</em> can be started from it.</p>
+<p>流程定义被解析为内部可执行对象模型，以便可以从中启动 <em>process instances</em> 。</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>To <em>deploy</em> a process definition to the Flowable engine, the <em>RepositoryService</em> is used, which can be retrieved from the <em>ProcessEngine</em> object. Using the <em>RepositoryService</em>, a new <em>Deployment</em> is created by passing the location of the XML file and calling the <em>deploy()</em> method to actually execute it:</p>
+<p>要将流程定义 <em>deploy</em> 到Flowable引擎，可以使用 <em>RepositoryService</em> ，可以从 <em>ProcessEngine</em> 对象中检索该 <em>RepositoryService</em> 。
+使用 <em>RepositoryService</em> ，通过传递XML文件的位置并调用 <em>deploy()</em> 方法来实际执行它，从而创建新的 <em>Deployment</em> ：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -846,7 +867,8 @@ Deployment deployment = repositoryService.createDeployment()
 </div>
 </div>
 <div class="paragraph">
-<p>We can now verify that the process definition is known to the engine (and learn a bit about the API) by querying it through the API. This is done by creating a new <em>ProcessDefinitionQuery</em> object through the <em>RepositoryService</em>.</p>
+<p>我们现在可以通过API查询引擎，了解引擎已知流程定义（并了解API）。
+这是通过 <em>RepositoryService</em> 创建一个新的 <em>ProcessDefinitionQuery</em> 对象来完成的。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -971,7 +993,7 @@ System.out.println(processVariables.get("employee") + " wants " +
 <div class="paragraph">
 <p>Which, if you run this, should look something like this:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/getting.started.console.logging3.png" alt="getting.started.console.logging3">
 </div>
@@ -1033,7 +1055,7 @@ public class CallExternalSystemDelegate implements JavaDelegate {
 <div class="paragraph">
 <p>When running the example now, the logging message is shown, demonstrating the custom logic is indeed executed:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/getting.started.console.logging4.png" alt="getting.started.console.logging4">
 </div>
@@ -2402,7 +2424,7 @@ void addEventListener(FlowableEventListener listenerToAdd, FlowableEventType... 
 <div class="paragraph">
 <p>The engine API is the most common way of interacting with Flowable. The main starting point is the <code>ProcessEngine</code>, which can be created in several ways as described in the  <a href="#configuration">configuration section</a>. From the ProcessEngine, you can obtain the various services that contain the workflow/BPM methods.  ProcessEngine and the services objects are thread safe, so you can keep a reference to one of those for a whole server.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/api.services.png" alt="api.services">
 </div>
@@ -2723,7 +2745,7 @@ void removeTransientVariableLocal(String variableName);</code></pre>
 <div class="paragraph">
 <p>The following BPMN diagram shows a typical example:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/api.transient.variable.example.png" alt="api.transient.variable.example">
 </div>
@@ -3099,7 +3121,7 @@ As with the <code>FlowableExtension</code> (see above), including this <code>Rul
 <div class="paragraph">
 <p>Suppose we have put a <em>breakpoint</em> somewhere in our unit test (in Eclipse this is done by double-clicking in the left border next to the code):</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/api.test.debug.breakpoint.png" alt="api.test.debug.breakpoint">
 </div>
@@ -3107,7 +3129,7 @@ As with the <code>FlowableExtension</code> (see above), including this <code>Rul
 <div class="paragraph">
 <p>If we now run the unit test in <em>debug</em> mode (right-click in test class, select <em>Run as</em> and then <em>JUnit test</em>), the test execution halts at our breakpoint, where we can now inspect the variables of our test as shown in the right upper panel.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/api.test.debug.view.png" alt="api.test.debug.view">
 </div>
@@ -3115,7 +3137,7 @@ As with the <code>FlowableExtension</code> (see above), including this <code>Rul
 <div class="paragraph">
 <p>To inspect the Flowable data, open up the <em>'Display'</em> window (if this window isn&#8217;t there, open Window&#8594;Show View&#8594;Other and select <em>Display</em>.) and type (code completion is available) <code>org.h2.tools.Server.createWebServer("-web").start()</code></p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/api.test.debug.start.h2.server.png" alt="api.test.debug.start.h2.server">
 </div>
@@ -3123,7 +3145,7 @@ As with the <code>FlowableExtension</code> (see above), including this <code>Rul
 <div class="paragraph">
 <p>Select the line you&#8217;ve just typed and right-click on it. Now select <em>Display</em> (or execute the shortcut instead of right-clicking)</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/api.test.debug.start.h2.server.2.png" alt="api.test.debug.start.h2.server.2">
 </div>
@@ -3131,7 +3153,7 @@ As with the <code>FlowableExtension</code> (see above), including this <code>Rul
 <div class="paragraph">
 <p>Now open up a browser and go to <a href="http://localhost:8082"><a href="http://localhost:8082" class="bare">http://localhost:8082</a></a>, and fill in the JDBC URL to the in-memory database (by default this is <code>jdbc:h2:mem:flowable</code>), and hit the connect button.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/api.test.debug.h2.login.png" alt="api.test.debug.h2.login">
 </div>
@@ -3139,7 +3161,7 @@ As with the <code>FlowableExtension</code> (see above), including this <code>Rul
 <div class="paragraph">
 <p>You can now see the Flowable data and use it to understand how and why your unit test is executing your process in a certain way.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/api.test.debug.h2.tables.png" alt="api.test.debug.h2.tables">
 </div>
@@ -5087,7 +5109,7 @@ InputStream imageStream = repositoryService.getResourceAsStream(
 <div class="paragraph">
 <p>The resource can be retrieved in exactly the same way as when <a href="#providingProcessDiagram">an image is provided</a> in the deployment.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/deployment.image.generation.png" alt="deployment.image.generation">
 </div>
@@ -5152,7 +5174,7 @@ InputStream imageStream = repositoryService.getResourceAsStream(
 <div class="paragraph">
 <p>Create a new XML file (<em>right-click on any project and select New&#8594;Other&#8594;XML-XML File</em>) and give it a name. Make sure that the file <strong>ends with .bpmn20.xml or .bpmn</strong>, otherwise the engine won&#8217;t pick it up for deployment.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/new.bpmn.procdef.png" alt="new.bpmn.procdef">
 </div>
@@ -5238,7 +5260,7 @@ xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL
 <div class="paragraph">
 <p>The business process as described above can be defined graphically using the <a href="#flowableDesigner">Flowable Designer</a>. However, for this tutorial, we&#8217;ll type the XML ourselves, as we&#8217;ll learn the most this way at this stage. The graphical BPMN 2.0 notation of our process looks like this:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/financial.report.example.diagram.png" alt="financial.report.example.diagram">
 </div>
@@ -5426,7 +5448,7 @@ List&lt;Task&gt; tasks = taskService.createTaskQuery().taskCandidateGroup("accou
 <p>As we&#8217;ve configured our <code>ProcessEngine</code> to use the same database that the demo setup is using, we can now log into the <a href="http://localhost:8080/flowable-idm/">Flowable IDM</a>. Login as admin/test and create 2 new users <em>kermit</em> and <em>fozzie</em>, and give both of them the <em>Access the workflow application</em> privilege. Then create 2 new organization groups named <em>accountancy</em> and <em>management</em>, and add fozzie to the new accountancy group and add kermit to the management group.
 Now login with fozzie to the <a href="http://localhost:8080/flowable-task/">Flowable task</a> application, and we will find that we can start our business process by selecting the Task App, then its <em>Processes</em> page and selecting the <em>'Monthly financial report'</em> process.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.financial.report.example.start.process.png" alt="bpmn.financial.report.example.start.process">
 </div>
@@ -5434,7 +5456,7 @@ Now login with fozzie to the <a href="http://localhost:8080/flowable-task/">Flow
 <div class="paragraph">
 <p>As explained, the process will execute until reaching the first user task. As we&#8217;re logged in as fozzie, we can see that there is a new candidate task available for him after we&#8217;ve started a process instance. Select the <em>Tasks</em> page to view this new task.  Note that even if the process was started by someone else, the task would still be visible as a candidate task to everyone in the accountancy group.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.financial.report.example.task.assigned.png" alt="bpmn.financial.report.example.task.assigned">
 </div>
@@ -5461,7 +5483,7 @@ Now login with fozzie to the <a href="http://localhost:8080/flowable-task/">Flow
 <div class="paragraph">
 <p>In the Flowable Task app, clicking the <em>claim</em> button will call the same operation. The task will now move to the personal task list of the logged on user. You&#8217;ll also see that the assignee of the task changed to the current logged in user.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.financial.report.example.claim.task.png" alt="bpmn.financial.report.example.claim.task">
 </div>
@@ -5871,7 +5893,7 @@ RuntimeService.signalEventReceived(String signalName, String executionId);</code
 <div class="paragraph">
 <p>The following is an example of two separate processes communicating using signals. The first process is started if an insurance policy is updated or changed. After the changes have been reviewed by a human participant, a signal event is thrown, signaling that a policy has changed:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.signal.event.throw.png" alt="bpmn.signal.event.throw">
 </div>
@@ -5879,7 +5901,7 @@ RuntimeService.signalEventReceived(String signalName, String executionId);</code
 <div class="paragraph">
 <p>This event can now be caught by all process instances that are interested. The following is an example of a process subscribing to the event.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.signal.event.catch.png" alt="bpmn.signal.event.catch">
 </div>
@@ -5887,7 +5909,7 @@ RuntimeService.signalEventReceived(String signalName, String executionId);</code
 <div class="paragraph">
 <p><strong>Note:</strong> it&#8217;s important to understand that a signal event is broadcast to <strong>all</strong> active handlers. This means, in the case of the example given above, that all instances of the process catching the signal will receive the event. In this scenario, this is what we want. However, there are also situations where the broadcast behavior is unintended. Consider the following process:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.signal.event.warning.1.png" alt="bpmn.signal.event.warning.1">
 </div>
@@ -6011,7 +6033,7 @@ particular <em>execution</em>. Such message event subscriptions can be queried u
 <div class="paragraph">
 <p>The following is an example of a process that can be started using two different messages:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.start.message.event.example.1.png" alt="bpmn.start.message.event.example.1">
 </div>
@@ -6082,7 +6104,7 @@ particular <em>execution</em>. Such message event subscriptions can be queried u
 <div class="paragraph">
 <p>A none start event is visualized as a circle with no inner icon (in other words, no trigger type).</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.none.start.event.png" alt="bpmn.none.start.event">
 </div>
@@ -6133,7 +6155,7 @@ particular <em>execution</em>. Such message event subscriptions can be queried u
 <div class="paragraph">
 <p>A timer start event is visualized as a circle with clock inner icon.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.clock.start.event.png" alt="bpmn.clock.start.event">
 </div>
@@ -6245,7 +6267,7 @@ ProcessInstance startProcessInstanceByMessage(String messageName, String busines
 <div class="paragraph">
 <p>A message start event is visualized as a circle with a message event symbol. The symbol is unfilled, to represent the catching (receiving) behavior.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.start.message.event.png" alt="bpmn.start.message.event">
 </div>
@@ -6298,7 +6320,7 @@ ProcessInstance startProcessInstanceByMessage(String messageName, String busines
 <div class="paragraph">
 <p>A signal start event is visualized as a circle with a signal event symbol. The symbol is unfilled, to represent the catching (receiving) behavior.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.start.signal.event.png" alt="bpmn.start.signal.event">
 </div>
@@ -6342,7 +6364,7 @@ ProcessInstance startProcessInstanceByMessage(String messageName, String busines
 <div class="paragraph">
 <p>An error start event is visualized as a circle with an error event symbol. The symbol is unfilled, to represent the catching (receiving) behavior.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.start.error.event.png" alt="bpmn.start.error.event">
 </div>
@@ -6381,7 +6403,7 @@ ProcessInstance startProcessInstanceByMessage(String messageName, String busines
 <div class="paragraph">
 <p>A none end event is visualized as a circle with a thick border with no inner icon (no result type).</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.none.end.event.png" alt="bpmn.none.end.event">
 </div>
@@ -6412,7 +6434,7 @@ ProcessInstance startProcessInstanceByMessage(String messageName, String busines
 <div class="paragraph">
 <p>An error end event is visualized as a typical end event (circle with thick border), with the error icon inside. The error icon is completely black, to indicate its throwing semantics.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.error.end.event.png" alt="bpmn.error.end.event">
 </div>
@@ -6487,7 +6509,7 @@ ProcessInstance startProcessInstanceByMessage(String messageName, String busines
 <div class="paragraph">
 <p>A cancel end event visualized as a typical end event (circle with thick outline), with a full black circle inside.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.terminate.end.event.png" alt="bpmn.terminate.end.event">
 </div>
@@ -6523,7 +6545,7 @@ ProcessInstance startProcessInstanceByMessage(String messageName, String busines
 <div class="paragraph">
 <p>A cancel end event is visualized as a typical end event (circle with thick outline), with the cancel icon inside. The cancel icon is completely black, to indicate its throwing semantics.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.cancel.end.event.png" alt="bpmn.cancel.end.event">
 </div>
@@ -6589,7 +6611,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>A timer boundary event is visualized as a typical boundary event (circle on the border), with the timer icon on the inside.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.boundary.timer.event.png" alt="bpmn.boundary.timer.event">
 </div>
@@ -6615,7 +6637,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>In the graphical representation, the line of the circle is dotted as you can see in the example above:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.non.interrupting.boundary.timer.event.png" alt="bpmn.non.interrupting.boundary.timer.event">
 </div>
@@ -6640,7 +6662,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>There is a known issue regarding concurrency when using boundary events of any type. Currently, it is not possible to have multiple outgoing sequence flows attached to a boundary event. A solution to this problem is to use one outgoing sequence flow that goes to a parallel gateway.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.known.issue.boundary.event.png" alt="bpmn.known.issue.boundary.event">
 </div>
@@ -6666,7 +6688,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>A boundary error event is visualized as a typical intermediate event (circle with smaller circle inside) on the boundary, with the error icon inside. The error icon is white, to indicate its <em>catch</em> semantics.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.boundary.error.event.png" alt="bpmn.boundary.error.event">
 </div>
@@ -6717,7 +6739,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>The following example process shows how an error end event can be used. When the <em>'Review profitability'</em> user task is completed by saying that not enough information is provided, an error is thrown. When this error is caught on the boundary of the sub-process, all active activities within the <em>'Review sales lead'</em> sub-process are destroyed (even if <em>'Review customer rating'</em> had not yet been completed), and the <em>'Provide additional details'</em> user task is created.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.boundary.error.example.png" alt="bpmn.boundary.error.example">
 </div>
@@ -6746,7 +6768,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>A boundary signal event is visualized as a typical intermediate event (circle with smaller circle inside) on the boundary, with the signal icon inside. The signal icon is white (unfilled), to indicate its <em>catch</em> semantics.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.boundary.signal.event.png" alt="bpmn.boundary.signal.event">
 </div>
@@ -6785,7 +6807,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>A boundary message event is visualized as a typical intermediate event (circle with smaller circle inside) on the boundary, with the message icon inside. The message icon is white (unfilled), to indicate its <em>catch</em> semantics.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.boundary.message.event.png" alt="bpmn.boundary.message.event">
 </div>
@@ -6836,7 +6858,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>A cancel boundary event is visualized as a typical intermediate event (circle with smaller circle inside) on the boundary, with the cancel icon inside. The cancel icon is white (unfilled), to indicate its <em>catching</em> semantics.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.boundary.cancel.event.png" alt="bpmn.boundary.cancel.event">
 </div>
@@ -6897,7 +6919,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>A compensation boundary event is visualized as a typical intermediate event (circle with smaller circle inside) on the boundary, with the compensation icon inside. The compensation icon is white (unfilled), to indicate its <em>catching</em> semantics. In addition to a compensation boundary event, the following figure shows a compensation handler associated with the boundary event using a unidirectional association:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.boundary.compensation.event.png" alt="bpmn.boundary.compensation.event">
 </div>
@@ -6964,7 +6986,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>A timer intermediate event is visualized as an intermediate catching event, with the timer icon on the inside.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.intermediate.timer.event.png" alt="bpmn.intermediate.timer.event">
 </div>
@@ -7005,7 +7027,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>An intermediate signal catch event is visualized as a typical intermediate event (circle with smaller circle inside), with the signal icon inside. The signal icon is white (unfilled), to indicate its <em>catch</em> semantics.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.intermediate.signal.catch.event.png" alt="bpmn.intermediate.signal.catch.event">
 </div>
@@ -7044,7 +7066,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>An intermediate catching message event is visualized as a typical intermediate event (circle with smaller circle inside), with the message icon inside. The message icon is white (unfilled), to indicate its <em>catch</em> semantics.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.intermediate.message.catch.event.png" alt="bpmn.intermediate.message.catch.event">
 </div>
@@ -7101,7 +7123,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>The following process diagram shows a simple example of an intermediate none event, which is often used to indicate some state achieved in the process.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.intermediate.none.event.png" alt="bpmn.intermediate.none.event">
 </div>
@@ -7148,7 +7170,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>An intermediate signal throw event is visualized as a typical intermediate event (circle with smaller circle inside), with the signal icon inside. The signal icon is black (filled), to indicate its <em>throw</em> semantics.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.intermediate.signal.throw.event.png" alt="bpmn.intermediate.signal.throw.event">
 </div>
@@ -7216,7 +7238,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p><strong>Note:</strong> If compensation is thrown within a scope that contains a sub-process, and the sub-process contains activities with compensation handlers, compensation is only propagated to the sub-process if it has completed successfully when compensation is thrown. If some of the activities nested inside the sub-process have completed and have attached compensation handlers, the compensation handlers are not executed if the sub-process containing these activities is not completed yet. Consider the following example:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.throw.compensation.example1.png" alt="bpmn.throw.compensation.example1">
 </div>
@@ -7262,7 +7284,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>An intermediate compensation throw event is visualized as a typical intermediate event (circle with smaller circle inside), with the compensation icon inside. The compensation icon is black (filled), to indicate its <em>throw</em> semantics.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.intermediate.compensation.throw.event.png" alt="bpmn.intermediate.compensation.throw.event">
 </div>
@@ -7306,7 +7328,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>A sequence flow is visualized as an arrow going from the source element towards the target element. The arrow always points towards the target.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.sequence.flow.png" alt="bpmn.sequence.flow">
 </div>
@@ -7339,7 +7361,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>A conditional sequence flow is visualized as a regular sequence flow, with a small diamond at the beginning. The condition expression is shown next to the sequence flow.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.conditional.sequence.flow.png" alt="bpmn.conditional.sequence.flow">
 </div>
@@ -7393,7 +7415,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>The Flowable distribution contains the following example process using value and method expressions (see <em>org.flowable.examples.bpmn.expression)</em>:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.uel-expression.on.seq.flow.png" alt="bpmn.uel expression.on.seq.flow">
 </div>
@@ -7413,7 +7435,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>A default sequence flow is visualized as a regular sequence flow, with a <em>slash</em> marker at the beginning.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.default.sequence.flow.png" alt="bpmn.default.sequence.flow">
 </div>
@@ -7453,7 +7475,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>A gateway is graphically visualized as a diamond shape, with an icon inside. The icon shows the type of gateway.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.gateway.png" alt="bpmn.gateway">
 </div>
@@ -7474,7 +7496,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>An exclusive gateway is visualized as a typical gateway (a diamond shape) with an <em>X</em> icon inside, referring to the <em>XOR</em> semantics. Note that a gateway without an icon inside defaults to an exclusive gateway. The BPMN 2.0 specification does not permit use of both the diamond with and without an X in the same process definition.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.exclusive.gateway.notation.png" alt="bpmn.exclusive.gateway.notation">
 </div>
@@ -7488,7 +7510,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>Take, for example, the following model:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.exclusive.gateway.png" alt="bpmn.exclusive.gateway">
 </div>
@@ -7547,7 +7569,7 @@ Note that a boundary event is defined on the same level as the activities to whi
 <div class="paragraph">
 <p>A parallel gateway is visualized as a gateway (diamond shape) with the <em>plus</em> symbol inside, referring to the <em>AND</em> semantics.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.parallel.gateway.png" alt="bpmn.parallel.gateway">
 </div>
@@ -7619,7 +7641,7 @@ assertEquals("Ship Order", task2.getName());</code></pre>
 <div class="paragraph">
 <p>Note that a parallel gateway does not need to be <em>balanced</em> (a matching number of incoming/outgoing sequence flow for corresponding parallel gateways). A parallel gateway will simply wait for all incoming sequence flows and create a concurrent path of execution for each outgoing sequence flow, not influenced by other constructs in the process model. So, the following process is legal in BPMN 2.0:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.unbalanced.parallel.gateway.png" alt="bpmn.unbalanced.parallel.gateway">
 </div>
@@ -7655,7 +7677,7 @@ assertEquals("Ship Order", task2.getName());</code></pre>
 <div class="paragraph">
 <p>An inclusive gateway is visualized as a gateway (diamond shape) with the <em>circle</em> symbol inside.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.inclusive.gateway.png" alt="bpmn.inclusive.gateway">
 </div>
@@ -7765,7 +7787,7 @@ assertEquals("Ship Order", task.getName());</code></pre>
 <div class="paragraph">
 <p>An Event-based Gateway is visualized as a diamond shape like other BPMN gateways with a special icon inside.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.event.based.gateway.notation.png" alt="bpmn.event.based.gateway.notation">
 </div>
@@ -7782,7 +7804,7 @@ assertEquals("Ship Order", task.getName());</code></pre>
 <div class="paragraph">
 <p>The following process is an example of a process with an Event-based Gateway. When the execution arrives at the Event-based Gateway, process execution is suspended. In addition, the process instance subscribes to the alert signal event and creates a timer that fires after 10 minutes. This effectively causes the process engine to wait for ten minutes for a signal event. If the signal occurs within 10 minutes, the timer is cancelled and execution continues after the signal. If the signal is not fired, execution continues after the timer and the signal subscription is canceled.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.event.based.gateway.example.png" alt="bpmn.event.based.gateway.example">
 </div>
@@ -7850,7 +7872,7 @@ assertEquals("Ship Order", task.getName());</code></pre>
 <div class="paragraph">
 <p>A user task is visualized as a typical task (rounded rectangle), with a small user icon in the left upper corner.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.user.task.png" alt="bpmn.user.task">
 </div>
@@ -8230,7 +8252,7 @@ public class IdentityLinkType extends org.flowable.engine.task.IdentityLinkType 
 <div class="paragraph">
 <p>A script task is visualized as a typical BPMN 2.0 task (rounded rectangle), with a small <em>script</em> icon in the top-left corner of the rectangle.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.scripttask.png" alt="bpmn.scripttask">
 </div>
@@ -8346,7 +8368,7 @@ public class IdentityLinkType extends org.flowable.engine.task.IdentityLinkType 
 <div class="paragraph">
 <p>A service task is visualized as a rounded rectangle with a small gear icon in the top-left corner.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.java.service.task.png" alt="bpmn.java.service.task">
 </div>
@@ -9063,7 +9085,7 @@ public class StartProcessInstanceTestDelegateWithInjection {
 <div class="paragraph">
 <p>A Web Service task is visualized in the same way as a Java service task.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.web.service.task.png" alt="bpmn.web.service.task">
 </div>
@@ -9244,7 +9266,7 @@ public class StartProcessInstanceTestDelegateWithInjection {
 <div class="paragraph">
 <p>A Business Rule task is visualized the with a table icon.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.business.rule.task.png" alt="bpmn.business.rule.task">
 </div>
@@ -10357,7 +10379,7 @@ For example in a route like:</p>
 <div class="paragraph">
 <p>A manual task is visualized as a rounded rectangle, with a little <em>hand</em> icon in the upper left corner</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.manual.task.png" alt="bpmn.manual.task">
 </div>
@@ -10385,7 +10407,7 @@ For example in a route like:</p>
 <div class="paragraph">
 <p>A Receive Task is visualized as a task (rounded rectangle) with a message icon in the top left corner. The message is white (a black message icon would have send semantics)</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.receive.task.png" alt="bpmn.receive.task">
 </div>
@@ -10927,7 +10949,7 @@ public void testExecutionListenerFieldInjection() {
 <div class="paragraph">
 <p>If an activity is multi-instance, this is indicated by three short lines at the bottom of the activity. Three <em>vertical</em> lines indicates that the instances will be executed in parallel, while three <em>horizontal</em> lines indicate sequential execution.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.multi.instance.png" alt="bpmn.multi.instance">
 </div>
@@ -11045,7 +11067,7 @@ public void testExecutionListenerFieldInjection() {
 <div class="paragraph">
 <p>Since a multi-instance is a regular activity, it is possible to define a <a href="#bpmnBoundaryEvent">boundary event</a> on its boundary. In the case of an interrupting boundary event, when the event is caught, <strong>all instances</strong> that are still active will be destroyed. Take, for example, the following multi-instance sub-process:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.multi.instance.boundary.event.png" alt="bpmn.multi.instance.boundary.event">
 </div>
@@ -11156,7 +11178,7 @@ public void testExecutionListenerFieldInjection() {
 <div class="paragraph">
 <p>If an activity is a compensation handler, the compensation event icon is displayed in the center bottom area. The following excerpt from a process diagram shows a service task with an attached compensation boundary event, which is associated to a compensation handler. Notice the compensation handler icon in the bottom canter area of the "cancel hotel reservation" service task.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.boundary.compensation.event.png" alt="bpmn.boundary.compensation.event">
 </div>
@@ -11217,7 +11239,7 @@ public void testExecutionListenerFieldInjection() {
 <div class="paragraph">
 <p>A Sub-Process is visualized as a typical activity (a rounded rectangle). If the Sub-Process is <em>collapsed</em>, only the name and a plus-sign are displayed, giving a high-level overview of the process:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.collapsed.subprocess.png" alt="bpmn.collapsed.subprocess">
 </div>
@@ -11225,7 +11247,7 @@ public void testExecutionListenerFieldInjection() {
 <div class="paragraph">
 <p>If the Sub-Process is <em>expanded</em>, the steps of the Sub-Process are displayed within the Sub-Process boundaries:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.expanded.subprocess.png" alt="bpmn.expanded.subprocess">
 </div>
@@ -11233,7 +11255,7 @@ public void testExecutionListenerFieldInjection() {
 <div class="paragraph">
 <p>One of the main reasons to use a Sub-Process is to define a scope for a certain event. The following process model shows this: both the <em>investigate software/investigate hardware</em> tasks need to be done in parallel, but both tasks need to be done within a certain time, before <em>Level 2 support</em> is consulted. Here, the scope of the timer (in which activities must be done in time) is constrained by the Sub-Process.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.subprocess.with.boundary.timer.png" alt="bpmn.subprocess.with.boundary.timer">
 </div>
@@ -11288,7 +11310,7 @@ public void testExecutionListenerFieldInjection() {
 <div class="paragraph">
 <p>An Event Sub-Process can be visualized as an <a href="#bpmnSubProcessGraphicalNotation">embedded sub-process</a> with a dotted outline.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.subprocess.eventSubprocess.png" alt="bpmn.subprocess.eventSubprocess">
 </div>
@@ -11312,7 +11334,7 @@ public void testExecutionListenerFieldInjection() {
 <div class="paragraph">
 <p>The following is an example of an Event Sub-Process triggered using an Error Start Event. The Event Sub-Process is located at the "process level", in other words, is scoped to the process instance:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.subprocess.eventSubprocess.example.1.png" alt="bpmn.subprocess.eventSubprocess.example.1">
 </div>
@@ -11334,7 +11356,7 @@ public void testExecutionListenerFieldInjection() {
 <div class="paragraph">
 <p>As already stated, an Event Sub-Process can also be added to an embedded sub-process. If it&#8217;s added to an embedded sub-process, it becomes an alternative to a boundary event. Consider the two following process diagrams. In both cases the embedded sub-process throws an error event. Both times the error is caught and handled using a user task.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.subprocess.eventSubprocess.example.2a.png" alt="bpmn.subprocess.eventSubprocess.example.2a">
 </div>
@@ -11342,7 +11364,7 @@ public void testExecutionListenerFieldInjection() {
 <div class="paragraph">
 <p>As opposed to:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.subprocess.eventSubprocess.example.2b.png" alt="bpmn.subprocess.eventSubprocess.example.2b">
 </div>
@@ -11391,7 +11413,7 @@ public void testExecutionListenerFieldInjection() {
 <div class="paragraph">
 <p>The following diagram illustrates the three different outcomes:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.transaction.subprocess.example.1.png" alt="bpmn.transaction.subprocess.example.1">
 </div>
@@ -11453,7 +11475,7 @@ public void testExecutionListenerFieldInjection() {
 <div class="paragraph">
 <p>A transaction sub-process is visualized as a an <a href="#bpmnSubProcessGraphicalNotation">embedded sub-process</a> with a double outline.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.transaction.subprocess.png" alt="bpmn.transaction.subprocess">
 </div>
@@ -11477,7 +11499,7 @@ public void testExecutionListenerFieldInjection() {
 <div class="paragraph">
 <p>The following is an example of a transaction sub-process:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.transaction.subprocess.example.2.png" alt="bpmn.transaction.subprocess.example.2">
 </div>
@@ -11503,7 +11525,7 @@ public void testExecutionListenerFieldInjection() {
 <div class="paragraph">
 <p>A call activity is visualized in the same way as a <a href="#bpmnSubProcessGraphicalNotation">sub-process</a>, but with a thick border (collapsed and expanded). Depending on the modeling tool, a call activity can also be expanded, but the default visualization is the collapsed sub-process representation.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.collapsed.call.activity.png" alt="bpmn.collapsed.call.activity">
 </div>
@@ -11650,7 +11672,7 @@ you would like to reference exact process definition by its id.</p>
 <div class="paragraph">
 <p>The following process diagram shows a simple handling of an order. As the checking of the customer&#8217;s credit could be common to many other processes, the <em>check credit step</em> is modeled here as a call activity.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.call.activity.super.process.png" alt="bpmn.call.activity.super.process">
 </div>
@@ -11678,7 +11700,7 @@ you would like to reference exact process definition by its id.</p>
 <div class="paragraph">
 <p>The sub-process looks as follows:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.call.activity.sub.process.png" alt="bpmn.call.activity.sub.process">
 </div>
@@ -11697,7 +11719,7 @@ you would like to reference exact process definition by its id.</p>
 All the steps of these sub process instances will be executed asynchronously. When the last asynchronous service task is executed, the end event will be visited.
 At that point, the control will be passed back to the parent process instance.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.call.activity.async.complete.png" alt="bpmn.call.activity.async.complete">
 </div>
@@ -11720,7 +11742,7 @@ When the exclusive lock is created, it will be held for parent process instance 
 <div class="paragraph">
 <p>Flowable executes processes in a transactional way that can be configured to suite your needs. Let&#8217;s start by looking at how Flowable scopes transactions normally. If you trigger Flowable (start a process, complete a task, signal an execution), Flowable is going to advance in the process until it reaches wait states on each active path of execution. More concretely speaking, it performs a depth-first search through the process graph and returns if it has reached wait states on every branch of execution. A wait state is a task that is performed "later", which means that Flowable persists the current execution and waits to be triggered again. The trigger can either come from an external source, for example, if we have a user task or a receive message task, or from Flowable itself if we have a timer event. This is illustrated in the following picture:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/async.example.no.async.PNG" alt="async.example.no.async">
 </div>
@@ -11731,7 +11753,7 @@ When the exclusive lock is created, it will be held for parent process instance 
 <div class="paragraph">
 <p>In some cases this is not what we want. Sometimes we need custom control over transaction boundaries in a process, in order to be able to scope logical units of work. This is where asynchronous continuations come into play. Consider the following process (fragment):</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/async.example.async.PNG" alt="async.example.async">
 </div>
@@ -11799,7 +11821,7 @@ When the exclusive lock is created, it will be held for parent process instance 
 <div class="paragraph">
 <p>Consider the following process definition:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/bpmn.why.exclusive.jobs.png" alt="bpmn.why.exclusive.jobs">
 </div>
@@ -12670,7 +12692,7 @@ assertEquals("updatedValue", ((FieldAccessJPAEntity)updatedEntity).getValue());<
 <div class="paragraph">
 <p>Please note that the process doesn&#8217;t contain any forms, since it is only used in a unit test.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/jpa.spring.example.process.png" alt="jpa.spring.example.process">
 </div>
@@ -13150,7 +13172,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.add.update.site.png" alt="designer.add.update.site">
 </div>
@@ -13168,7 +13190,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.create.flowable.project.png" alt="designer.create.flowable.project">
 </div>
@@ -13180,7 +13202,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.bpmn.file.png" alt="designer.bpmn.file">
 </div>
@@ -13192,7 +13214,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.open.importedfile.png" alt="designer.open.importedfile" width="600">
 </div>
@@ -13204,7 +13226,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.create.deployment.png" alt="designer.create.deployment" width="500">
 </div>
@@ -13216,7 +13238,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.unittest.generate.png" alt="designer.unittest.generate" width="600">
 </div>
@@ -13228,7 +13250,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.project.maven.png" alt="designer.project.maven" width="500">
 </div>
@@ -13243,7 +13265,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.model.process.png" alt="designer.model.process">
 </div>
@@ -13255,7 +13277,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.model.quick.change.png" alt="designer.model.quick.change">
 </div>
@@ -13267,7 +13289,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.model.quick.new.png" alt="designer.model.quick.new">
 </div>
@@ -13279,7 +13301,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.servicetask.property.png" alt="designer.servicetask.property">
 </div>
@@ -13291,7 +13313,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.model.poolandlanes.png" alt="designer.model.poolandlanes">
 </div>
@@ -13303,7 +13325,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.model.labels.png" alt="designer.model.labels">
 </div>
@@ -13315,7 +13337,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.model.eventsubprocess.png" alt="designer.model.eventsubprocess">
 </div>
@@ -13327,7 +13349,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.embeddedprocess.canvas.png" alt="designer.embeddedprocess.canvas">
 </div>
@@ -13339,7 +13361,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.timerboundary.canvas.png" alt="designer.timerboundary.canvas">
 </div>
@@ -13351,7 +13373,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.mailtask.property.png" alt="designer.mailtask.property">
 </div>
@@ -13363,7 +13385,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.listener.configuration.png" alt="designer.listener.configuration">
 </div>
@@ -13375,7 +13397,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.sequence.condition.png" alt="designer.sequence.condition">
 </div>
@@ -13386,7 +13408,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 <div class="paragraph">
 <p>Deploying process definitions and task forms on the Flowable engine is not hard. You need a BAR file containing the process definition BPMN 2.0 XML file and optionally task forms and an image of the process that can be viewed in the Flowable app. In the Flowable Designer it&#8217;s made very easy to create a BAR file. When you&#8217;ve finished your process implementation just right-click on your Flowable project in the package explorer and choose for the <strong>Create deployment artifacts</strong> option at the bottom of the popup menu.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.create.deployment.png" alt="designer.create.deployment" width="600">
 </div>
@@ -13394,7 +13416,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 <div class="paragraph">
 <p>Then a deployment directory is created containing the BAR file and optionally a JAR file with the Java classes of your Flowable project.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.deployment.dir.png" alt="designer.deployment.dir">
 </div>
@@ -13586,7 +13608,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 * Start Flowable Designer and from the menu, select <code>Window</code> &gt; <code>Preferences</code> or <code>Eclipse</code> &gt; <code>Preferences</code>
 * In the preferences screen, type <code>user</code> as keyword. You should see an option to access the <code>User Libraries</code> in Eclipse in the <code>Java</code> section.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.preferences.userlibraries.png" alt="designer.preferences.userlibraries" width="250">
 </div>
@@ -13598,7 +13620,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.preferences.userlibraries.flowable.empty.png" alt="designer.preferences.userlibraries.flowable.empty" width="600">
 </div>
@@ -13610,7 +13632,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.preferences.userlibraries.flowable.moneytasks.png" alt="designer.preferences.userlibraries.flowable.moneytasks" width="600">
 </div>
@@ -13622,7 +13644,7 @@ implementation which overrides the default IDM engine to use a LDAP server inste
 </li>
 </ul>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.userlibraries.project.png" alt="designer.userlibraries.project" width="400">
 </div>
@@ -13720,7 +13742,7 @@ public class AcmeMoneyTask extends AbstractCustomServiceTask {
 <div class="paragraph">
 <p>If you extend Flowable Designer with this shape, the palette and corresponding node will look like this:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.palette.add.money.png" alt="designer.palette.add.money" width="250">
 </div>
@@ -13728,7 +13750,7 @@ public class AcmeMoneyTask extends AbstractCustomServiceTask {
 <div class="paragraph">
 <p>The properties screen for the money task is shown below. Note the required message for the <code>accountNumber</code> field.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.palette.add.money.properties.required.png" alt="designer.palette.add.money.properties.required">
 </div>
@@ -13739,7 +13761,7 @@ public class AcmeMoneyTask extends AbstractCustomServiceTask {
 <div class="paragraph">
 <p>The help for fields is offered by the buttons to the right of each property. Clicking on the button shows a popup as displayed below.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.palette.add.money.help.png" alt="designer.palette.add.money.help">
 </div>
@@ -13819,7 +13841,7 @@ public class AcmeMoneyTask extends AbstractCustomServiceTask {
 <div class="paragraph">
 <p>Creates a single-line text field as shown below. Can be a required field and shows validation messages as a tooltip. Validation failures are displayed by changing the background of the field to a light red color.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.property.text.invalid.png" alt="designer.property.text.invalid">
 </div>
@@ -13830,7 +13852,7 @@ public class AcmeMoneyTask extends AbstractCustomServiceTask {
 <div class="paragraph">
 <p>Creates a multiline text field as shown below (height is fixed at 80 pixels). Can be a required field and shows validation messages as a tooltip. Validation failures are displayed by changing the background of the field to a light red color.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.property.multiline.text.invalid.png" alt="designer.property.multiline.text.invalid">
 </div>
@@ -13841,7 +13863,7 @@ public class AcmeMoneyTask extends AbstractCustomServiceTask {
 <div class="paragraph">
 <p>Creates a structured editor for specifying a period of time by editing amounts of each unit with a spinner control. The result is shown below. Can be a required field (which is interpreted such that not all values can be 0, so at least 1 part of the period must have a non-zero value) and shows validation messages as a tooltip. Validation failures are displayed by changing the background of the entire field to a light red color. The value of the field is stored as a string of the form 1y 2mo 3w 4d 5h 6m 7s, which represents 1 year, 2 months, 3 weeks, 4 days, 6 minutes and 7 seconds. The entire string is always stored, even if parts are 0.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.property.period.png" alt="designer.property.period">
 </div>
@@ -13852,7 +13874,7 @@ public class AcmeMoneyTask extends AbstractCustomServiceTask {
 <div class="paragraph">
 <p>Creates a single checkbox control for boolean or toggle choices. Note that you can specify the <code>required</code> attribute on the <code>Property</code> annotation, but it will not be evaluated because that would leave the user without a choice whether to check the box or not. The value stored in the diagram is java.lang.Boolean.toString(boolean), which results in "true" or "false".</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.property.boolean.choice.png" alt="designer.property.boolean.choice">
 </div>
@@ -13876,12 +13898,12 @@ public class AcmeMoneyTask extends AbstractCustomServiceTask {
 private String withdrawlLimit;</code></pre>
 </div>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.property.radio.choice.png" alt="designer.property.radio.choice">
 </div>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.property.radio.choice.invalid.png" alt="designer.property.radio.choice.invalid">
 </div>
@@ -13907,12 +13929,12 @@ private String withdrawlLimit;</code></pre>
 private String accountType;</code></pre>
 </div>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.property.combobox.choice.png" alt="designer.property.combobox.choice">
 </div>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.property.combobox.choice.invalid.png" alt="designer.property.combobox.choice.invalid">
 </div>
@@ -13935,7 +13957,7 @@ private String accountType;</code></pre>
 private String expiryDate;</code></pre>
 </div>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.property.date.picker.png" alt="designer.property.date.picker">
 </div>
@@ -13979,7 +14001,7 @@ private List&lt;GroceryListItem&gt; groceryList;</code></pre>
 </tr>
 </table>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.property.datagrid.png" alt="designer.property.datagrid">
 </div>
@@ -14012,7 +14034,7 @@ private List&lt;GroceryListItem&gt; groceryList;</code></pre>
 <div class="paragraph">
 <p>The result of applying this extension is shown in the image below. As you can see, the manual task and script task shapes are no longer available in the <code>Tasks</code> drawer.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.palette.disable.manual.and.script.png" alt="designer.palette.disable.manual.and.script">
 </div>
@@ -14037,7 +14059,7 @@ private List&lt;GroceryListItem&gt; groceryList;</code></pre>
 <div class="paragraph">
 <p>The result will look like this (notice that the drawers the default shapes were in are no longer in the palette):</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/designer.palette.disable.all.png" alt="designer.palette.disable.all">
 </div>
@@ -14269,7 +14291,7 @@ See  <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/bui
 <div class="paragraph">
 <p>All Flowable UI apps should now be running with an H2 in-memory database and the following login screen should be shown in your web browser:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_idm_login_screen.png" alt="flowable idm login screen">
 </div>
@@ -14277,7 +14299,7 @@ See  <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/bui
 <div class="paragraph">
 <p>By default, the Flowable IDM application will create an admin user that has privileges to all the Flowable UI apps. You can login with admin/test and the browser should redirect to the Flowable Modeler application:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_modeler_startup_screen.png" alt="flowable modeler startup screen">
 </div>
@@ -14874,7 +14896,7 @@ It will also add all available privileges in the Flowable project to the newly c
 <div class="paragraph">
 <p>When logging in to <a href="http://localhost:8080/flowable-idm"><a href="http://localhost:8080/flowable-idm" class="bare">http://localhost:8080/flowable-idm</a></a> with admin/test for the first time the following user overview screen is shown:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_idm_startup_screen.png" alt="flowable idm startup screen">
 </div>
@@ -14882,7 +14904,7 @@ It will also add all available privileges in the Flowable project to the newly c
 <div class="paragraph">
 <p>In this screen users can be added, removed and updated. The groups section can be used to create, delete and update groups. In the group details view you can also add and remove users to and from the group. The privilege screen allows you to add and remove privileges from users and groups:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_idm_privilege_screen.png" alt="flowable idm privilege screen">
 </div>
@@ -15036,7 +15058,7 @@ So make sure that the <code>flowable.idm.app.admin.user-id</code> property value
 <div class="paragraph">
 <p>When you login to the Modeler application (<a href="http://localhost:8080/flowable-modeler"><a href="http://localhost:8080/flowable-modeler" class="bare">http://localhost:8080/flowable-modeler</a></a>) with your user (or the default admin/test user), you will see the process overview screen. From here you can start creating new BPMN process models by clicking on the Create Process or Import Process button.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_modeler_createmodel_popup.png" alt="flowable modeler createmodel popup" width="600">
 </div>
@@ -15047,7 +15069,7 @@ So make sure that the <code>flowable.idm.app.admin.user-id</code> property value
 <div class="paragraph">
 <p>After creating the model with the popup, the BPMN modeling canvas is shown. The BPMN editor is very similar to the Flowable 5 BPMN editor that was part of the Explorer application. All BPMN elements supported by the Flowable engine are available to be used in the design of a process model.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_modeler_design_screen.png" alt="flowable modeler design screen">
 </div>
@@ -15074,7 +15096,7 @@ So make sure that the <code>flowable.idm.app.admin.user-id</code> property value
 <div class="paragraph">
 <p>For a User task element there&#8217;s a <em>Referenced form</em> property in the properties panel. If you select this property, a popup is opened where you can select a form definition from the repository or create a new form. When creating a new form, a similar create dialog to the process model create dialog is presented. After filling in the name and form model key, the form editor is opened.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_modeler_formdesign_screen.png" alt="flowable modeler formdesign screen">
 </div>
@@ -15082,7 +15104,7 @@ So make sure that the <code>flowable.idm.app.admin.user-id</code> property value
 <div class="paragraph">
 <p>Form fields can be dragged from the form palette on to the form canvas. In this example, a name textfield, two date fields and a remarks multiline textfield are added to the form canvas. When editing a form field, the label, id, required status and placeholder can be filled in.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_modeler_editfield_popup.png" alt="flowable modeler editfield popup" width="600">
 </div>
@@ -15093,7 +15115,7 @@ So make sure that the <code>flowable.idm.app.admin.user-id</code> property value
 <div class="paragraph">
 <p>After saving the form model and closing the form editor, you are automatically navigated back to the process model (when the form editor was opened via the BPMN editor). When selecting the User task element again and clicking on the <em>Referenced form</em> property you will see that the newly created form definition is now attached to the User task. When clicking on the <em>Form</em> tab in the header of the Modeler application, all form definitions available in the model repository are shown.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_modeler_formoverview_screen.png" alt="flowable modeler formoverview screen">
 </div>
@@ -15104,7 +15126,7 @@ So make sure that the <code>flowable.idm.app.admin.user-id</code> property value
 <div class="paragraph">
 <p>Now let&#8217;s open the vacation request process model in the BPMN editor again and add a Script task to the process model, that will calculate the number of days between the vacation start and end dates. Click on the <em>Script format</em> property and fill in a value of <em>groovy</em> to instruct the Flowable engine to use the Groovy scripting engine. Now click on the <em>Script</em> property and fill in the script that calculates the number of days.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_modeler_script_popup.png" alt="flowable modeler script popup" width="600">
 </div>
@@ -15112,7 +15134,7 @@ So make sure that the <code>flowable.idm.app.admin.user-id</code> property value
 <div class="paragraph">
 <p>Now we have a <em>amountOfVacationDays</em> process variable we can add a Decision task to the process model. A decision task can be used to execute a DMN decision table in the Flowable DMN engine. Through the <em>Decision table reference</em> property, a new decision table model can be created and the DMN editor is opened.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_modeler_dmneditor_screen.png" alt="flowable modeler dmneditor screen">
 </div>
@@ -15140,7 +15162,7 @@ So make sure that the <code>flowable.idm.app.admin.user-id</code> property value
 <div class="paragraph">
 <p>With the <em>managerApprovalNeeded</em> variable available in the process instance context, we can now create an exclusive gateway with a sequence flow condition that evaluates the calculated value of the DMN Engine.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_modeler_sequenceflowcondition_popup.png" alt="flowable modeler sequenceflowcondition popup" width="500">
 </div>
@@ -15148,7 +15170,7 @@ So make sure that the <code>flowable.idm.app.admin.user-id</code> property value
 <div class="paragraph">
 <p>The full BPMN process model now looks like this:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_modeler_vacationrequest_screen.png" alt="flowable modeler vacationrequest screen">
 </div>
@@ -15156,7 +15178,7 @@ So make sure that the <code>flowable.idm.app.admin.user-id</code> property value
 <div class="paragraph">
 <p>With the process model completed, we can now create an app definition that combines one or more process models with all their associated models (for example, decision tables and form definitions) into a single artifact. An app definition can be exported as a BAR file (zip format) that can be deployed on the Flowable engine. When creating a vacation request app definition, the app editor will look something like the screen below.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_modeler_appeditor_screen.png" alt="flowable modeler appeditor screen">
 </div>
@@ -15164,7 +15186,7 @@ So make sure that the <code>flowable.idm.app.admin.user-id</code> property value
 <div class="paragraph">
 <p>In the app editor, an icon and a theme color can be selected that will be used in the Flowable Task application to show the application in the dashboard. The important step is to add the vacation request process model, and by selecting the process model, automatically include any form definitions and DMN decision tables.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_modeler_modelselection_popup.png" alt="flowable modeler modelselection popup">
 </div>
@@ -15172,7 +15194,7 @@ So make sure that the <code>flowable.idm.app.admin.user-id</code> property value
 <div class="paragraph">
 <p>A process model can be selected by clicking on the model thumbnail. When one or more models are selected, you can close the popup, save the app definition and close it. When navigating to the details view of the newly created vacation request app definition, the following details screen is shown:</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_modeler_appdetails_screen.png" alt="flowable modeler appdetails screen">
 </div>
@@ -15234,7 +15256,7 @@ download the app definition with the JSON model files for each included model. T
 <div class="paragraph">
 <p>On the dashboard on <a href="http://localhost:8080/flowable-task"><a href="http://localhost:8080/flowable-task" class="bare">http://localhost:8080/flowable-task</a></a>, you can see a vacation request app in addition to the default Task app, and any other apps that have been deployed to the Flowable engine already.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_task_dashboard_screen.png" alt="flowable task dashboard screen">
 </div>
@@ -15242,7 +15264,7 @@ download the app definition with the JSON model files for each included model. T
 <div class="paragraph">
 <p>When clicking on the vacation request app, the task list for the logged-in user is shown (which is probably empty for now).</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_task_tasklist_screen.png" alt="flowable task tasklist screen">
 </div>
@@ -15253,7 +15275,7 @@ download the app definition with the JSON model files for each included model. T
 <div class="paragraph">
 <p>The Flowable Task application automatically navigates to the process instance details view. You can see the <em>Provide vacation information</em> task is active and, for example, comments can be added and the process instance state can be shown diagrammatically using the <em>Show diagram</em> button.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_task_processdetails_screen.png" alt="flowable task processdetails screen">
 </div>
@@ -15261,7 +15283,7 @@ download the app definition with the JSON model files for each included model. T
 <div class="paragraph">
 <p>When navigating to the task list, you can also see the <em>Provide vacation information</em> task listed there as well. The task details are shown in this view, with the vacation info form being rendered. You can also switch to the details view by clicking on the <em>Show details</em> button. In the details view, comments can be added, users can involved in the task and attachments can be added to the task. You can also change the due date and the assignee of a task.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_task_taskdetails_screen.png" alt="flowable task taskdetails screen">
 </div>
@@ -15273,7 +15295,7 @@ download the app definition with the JSON model files for each included model. T
 <div class="paragraph">
 <p>When navigating to the <em>Processes</em> tab and clicking on the <em>Showing running processes</em> section, you can select an option to show completed process instances. The list of completed process instances is now shown and when clicking on the just completed vacation request process you can see the two completed tasks.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_task_processhistory_screen.png" alt="flowable task processhistory screen">
 </div>
@@ -15281,7 +15303,7 @@ download the app definition with the JSON model files for each included model. T
 <div class="paragraph">
 <p>The completed form of each task is stored in the ACT_FO_FORM_INSTANCE table of the Flowable Form engine. So it&#8217;s possible to look at the values of each completed form when you navigate to the completed task.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_task_completedform_screen.png" alt="flowable task completedform screen">
 </div>
@@ -15289,7 +15311,7 @@ download the app definition with the JSON model files for each included model. T
 <div class="paragraph">
 <p>Make sure to switch back to showing running processes instead of the completed ones, otherwise you won&#8217;t see newly started process instances. You can also filter tasks in the task list view. There are options to search on the name of a task, the task state, only tasks for a specific process definition and change the assignment filter.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_task_taskfilter_screen.png" alt="flowable task taskfilter screen" width="400">
 </div>
@@ -15346,7 +15368,7 @@ download the app definition with the JSON model files for each included model. T
 <div class="paragraph">
 <p>When the configuration is defined with the correct values, the <em>Process Engine</em> can be selected to administer the Flowable BPMN engine. By default, the deployments of the Flowable BPMN engine are shown.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_admin_deployments_screen.png" alt="flowable admin deployments screen">
 </div>
@@ -15354,7 +15376,7 @@ download the app definition with the JSON model files for each included model. T
 <div class="paragraph">
 <p>You can filter the deployments based on name and tenant identifier. In this view, it&#8217;s also possible to deploy a new BPMN XML file or BAR file to the Flowable engine. When clicking on one of the deployments, the deployment details view is shown.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_admin_deploymentdetails_screen.png" alt="flowable admin deploymentdetails screen">
 </div>
@@ -15362,7 +15384,7 @@ download the app definition with the JSON model files for each included model. T
 <div class="paragraph">
 <p>More details of a deployment are shown here and also the process definitions that are part of this deployment on which you click to get more details. It&#8217;s also possible to delete a deployment here. When you want to delete a deployed app definition, this is also the way to delete the app definition from the Flowable Task app dashboard. When clicking on one of the process definitions, the process definition details view is shown.</p>
 </div>
-<div class="imageblock" style="text-align: center">
+<div class="imageblock text-center">
 <div class="content">
 <img src="images/flowable_admin_processdefinitiondetails_screen.png" alt="flowable admin processdefinitiondetails screen">
 </div>

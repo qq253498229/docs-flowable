@@ -182,36 +182,44 @@ image::images/getting.started.console.logging2.png[align="center"]
 
 ==== 部署流程定义
 
-The process we'll build is a very simple holiday request process. The Flowable engine expects processes to be defined in the BPMN 2.0 format, which is an XML standard that is widely accepted in the industry. 
-In Flowable terminology, we speak about this as a *process definition*. From a _process definition_, many *process instances* can be started. Think of the _process definition_ as the blueprint for many executions 
-of the process. In this particular case, the _process definition_ defines the different steps involved in requesting holidays, while one _process instance_ matches the request for a holiday by one particular employee.
+我们即将构建一个非常简单的请假流程。
+Flowable引擎推荐以BPMN 2.0的格式定义流程，这是业界广泛接受的XML标准。
+在Flowable术语中，我们将其称为 *process definition* (流程定义)。
+从一个 *process definition* 中可以启动许多 *process instances* (流程实例)。
+可以认为 _process definition_ 是多个流程执行过程的蓝图。
+意思就是 _process definition_ 定义了多种不同步骤的请假流程，而一个 _process instance_ 就是其中的一个特定员工请假流程。
 
-BPMN 2.0 is stored as XML, but it has a visualization part too: it defines in a standard way how each different step type (a human task, an automatic service call, and so on) is represented and how to connect 
-these different steps to each other. Through this, the BPMN 2.0 standard allows technical and business people to communicate about business processes in a way that both parties understand.
+BPMN 2.0存储为XML，但它也有一个可视化部分: 它以标准方式定义了每个不同步骤类型（人工任务，自动调用服务等）以及如何将这些不同的步骤连接到一起。
+通过这种方式，BPMN 2.0标准允许技术人员和业务人员以双方都理解的方式交流业务流程。
 
-The process definition we'll use is the following:
+我们将使用的流程定义如下:
 
 image::images/getting.started.bpmn.process.png[align="center"]
 
-The process should be quite self-explanatory, but for clarity's sake let's describe the different bits:
+这个流程应该不用说就能懂，但为了清楚起见，我们来描述以下每个的点:
 
-* We assume the process is started by providing some information, such as the employee name, the amount of holiday requested and a description. Of course, this could be modeled as a separate first step in the process. 
-However, by having it as 'input data' for the process, a process instance is only actually created when a real request has been made. In the alternative case, a user could change his mind and cancel before submitting, yet the process instance would now be there. 
-In some scenarios this could be valuable information (for example, how many times is a request started, but not finished), depending on the business goal.
-* The circle on the left is called a *start event*. It's the starting point of a process instance.
-* The first rectangle is a *user task*. This is a step in the process that a human user has to perform. In this case, the manager needs to approve or reject the request.
-* Depending on what the manager decides, the *exclusive gateway* (the diamond shape with the cross) will route the process instance to either the approval or the rejection path.
-* If approved, we have to register the request in some external system, which is followed by a user task again for the original employee that notifies them of the decision. 
-This could, of course, be replaced by an email.
-* If rejected, an email is sent to the employee informing them of this.
+* 我们假设通过提供一些信息来启动流程，例如员工姓名，请假天数和描述。
+当然，这可以作为该流程中单独的第一步进行建模。
+但是，通过将其作为进程的输入数据，只有在发出实际请求时才会实际创建流程实例。
+在另一种情况下，用户可以在提交之前改变主意并取消，但流程实例还会放在那里。
+在某些情况下，这可能是有价值的信息（例如，请求已启动但未完成的次数），具体取决于具体的业务需求。
+* 最左边的圆圈称为 *start event* (开始事件)。 它是流程实例的起点。
+* 第一个矩形是一个 *user task* (用户任务)。 这是流程中用户必须执行的一个步骤。 在这种情况下，经理需要批准或拒绝该请求。
+* 根据经理决定的内容，*exclusive gateway* (排他网关，就是那个带叉的菱形）将流程实例路由到批准或拒绝路径。
+* 如果批准了，我们必须在某个外部系统中注册该请求，然后再向原始员工发送用户任务，通知他们该消息。 当然也可以用电子邮件代替。
+* 如果被拒绝，将向员工发送一封电子邮件来通知他们。
 
-Typically, such a _process definition_ is modeled with a visual modeling tool, such as the Flowable Designer (Eclipse) or the Flowable Modeler (web application).
+通常，这样的 _process definition_ 可以使用可视化建模工具进行建模，例如Flowable Designer（Eclipse插件）或Flowable Modeler（Web应用程序）。
 
-Here, however, we're going to write the XML directly to familiarize ourselves with BPMN 2.0 and its concepts.
+在这里，我们将直接编写XML以帮助大家熟悉BPMN 2.0及其概念。
 
-The BPMN 2.0 XML corresponding to the diagram above is shown below. Note that this is only the 'process part'. If you'd used a graphical modeling tool, the underlying XML file also contains the 'visualization' part that describes the graphical information, such as the coordinates of the various elements of the process definition (all graphical information is contained in the _BPMNDiagram_ tag in the XML, which is a child element of the _definitions_ tag).
+与上图对应的BPMN 2.0 XML如下所示。
+请注意，这只是流程部分。
+如果您使用了图形建模工具，
+则基础XML文件还包含描述图形信息的 '可视化' 部分，
+例如流程定义的各个元素的坐标（所有图形信息都包含在XML中的 _BPMNDiagram_ 标签中，这是 _definitions_ 标签的子元素）。
 
-Save the following XML in a file named _holiday-request.bpmn20.xml_ in the _src/main/resources_ folder.
+将下面的XML文件保存在 _src/main/resources_ 路径下名为 _holiday-request.bpmn20.xml_ 的文件中。
 
 [source,xml,linenums]
 ----
@@ -271,22 +279,35 @@ Save the following XML in a file named _holiday-request.bpmn20.xml_ in the _src/
 </definitions>
 ----
 
-Lines 2 to 11 look a bit daunting, but it's the same as you'll see in almost every process definition. It's kind of _boilerplate_ stuff that's needed to be fully compatible with the BPMN 2.0 standard specification.
+第2行到第11行看上去有点吓人，但它与您在几乎所有流程定义中看到的都相同。 这是需要与BPMN 2.0标准规范完全兼容的样板材料。
 
-Every step (in BPMN 2.0 terminology, *'activity'*) has an _id_ attribute that gives it a unique identifier in the XML file. All _activities_ can have an optional name too, which increases the readability of the visual diagram, of course.
+每个步骤（在BPMN 2.0术语中称为 *'activity'*）都有一个 _id_ 属性，在XML文件中为其提供唯一标识符。
+所有 _activities_ 也可以有一个可选名称，这样会增加可视化图表的可读性。
 
-The _activities_ are connected by a *sequence flow*, which is a directed arrow in the visual diagram. When executing a process instance, the execution will flow from the _start event_ to the next _activity_, following the _sequence flow_.
+_activities_ 通过 *sequence flow* (顺序流)进行连接，顺序流就是可视化试图中的有向箭头。
+在执行流程实例时，流程会根据 _sequence flow_ 的指向，从 _start event_ 前往下一个 _activity_ 。
 
-The _sequence flows_ leaving the _exclusive gateway_ (the diamond shape with the X) are clearly special: both have a _condition_ defined in the form of an _expression_ (see line 25 and 32). When the process instance execution reaches this _gateway_, the _conditions_ are evaluated and the first that resolves to _true_ is taken. This is what the _exclusive_ stands for here: only one is selected. Other types of gateways are, of course, possible if different routing behavior is needed.
+离开 _exclusive gateway_ （带叉的菱形） 的 _sequence flows_ 显然是特殊的:
+两者都具有以 _expression_ (表达式)形式定义的 _condition_ (条件)(参见第25和32行)。
+当流程实例执行到此 _gateway_ (网关)时，
+将评估 _conditions_ 并采用解析为 _true_ 的第一个条件。
+这就是这里的 _exclusive_ ：只选择一个继续执行。
+当然，如果需要不同行为的路由，其他类型的网关也是可以的。
 
-The condition written here as an _expression_ is of the form _${approved}_, which is a shorthand for _${approved == true}_. The variable 'approved' is called a *process variable*. A _process variable_ is a persistent bit of data that is stored together with the process instance and can be used during the lifetime of the process instance. In this case, it does mean that we will have to set this _process variable_ at a certain point (when the manager user task is submitted or, in Flowable terminology, _completed_) in the process instance, as it's not data that is available when the process instance starts.
+此处作为 _expression_ 写入的条件格式为 _${approved}_，
+其实就是 _${approved == true}_ 的简写。
+'approved' 的变量称为 *process variable* (流程变量) 。
+_process variable_ 是与流程实例一起存储的持久化数据，可以在流程实例的剩余生命周期中使用。
+在这个例子中，意思就是我们必须在流程实例中的某个点（当经理已经提交或者在Flowable术语中称为 _completed_ 的时候）设置这个 _process variable_，
+因此在流程实例刚启动时它是不可用的。
 
-Now we have the process BPMN 2.0 XML file, we next need to *'deploy'* it to the engine. _Deploying_ a process definition means that:
+现在我们已经有流程BPMN 2.0 XML文件了，接下来需要将它 *'deploy'* (部署)到引擎中。 _Deploying_ 流程定义意味着：
 
-* the process engine will store the XML file in the database, so it can be retrieved whenever needed
-* the process definition is parsed to an internal, executable object model, so that _process instances_ can be started from it.
+* 流程引擎会将XML文件存储在数据库中，因此可以在需要时查询它
+* 流程定义被解析为内部可执行对象模型，以便可以从中启动 _process instances_ 。
 
-To _deploy_ a process definition to the Flowable engine, the _RepositoryService_ is used, which can be retrieved from the _ProcessEngine_ object. Using the _RepositoryService_, a new _Deployment_ is created by passing the location of the XML file and calling the _deploy()_ method to actually execute it:
+要将流程定义 _deploy_ 到Flowable引擎，可以使用 _RepositoryService_ ，可以从 _ProcessEngine_ 对象中检索该 _RepositoryService_ 。
+使用 _RepositoryService_ ，通过传递XML文件的位置并调用 _deploy()_ 方法来实际执行它，从而创建新的 _Deployment_ ：
 
 [source,java,linenums]
 ----
@@ -296,7 +317,8 @@ Deployment deployment = repositoryService.createDeployment()
   .deploy();
 ----
 
-We can now verify that the process definition is known to the engine (and learn a bit about the API) by querying it through the API. This is done by creating a new _ProcessDefinitionQuery_ object through the _RepositoryService_.
+我们现在可以通过API查询引擎，了解引擎已知流程定义（并了解API）。
+这是通过 _RepositoryService_ 创建一个新的 _ProcessDefinitionQuery_ 对象来完成的。
 
 [source,java,linenums]
 ----
