@@ -429,70 +429,75 @@ Flowable 还试图在 <strong>MINOR</strong> 版本和 <strong>MICRO</strong> �
 </div>
 </div>
 <div class="sect1">
-<h2 id="_getting_started">2. Getting Started</h2>
+<h2 id="_入门">2. 入门</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_what_is_flowable">2.1. What is Flowable?</h3>
+<h3 id="_flowable_是什么">2.1. Flowable 是什么?</h3>
 <div class="paragraph">
-<p>Flowable is a light-weight business process engine written in Java. The Flowable process engine allows you to deploy BPMN 2.0 process definitions (an industry XML standard for defining processes),
-creating process instances of those process definitions, running queries, accessing active or historical process instances and related data, plus much more. This section will gradually introduce various concepts and
-APIs to do that through examples that you can follow on your own development machine.</p>
+<p>Flowable 是一个用Java语言编写的轻量级业务流程引擎。
+Flowable 流程引擎允许您部署BPMN 2.0流程定义文件（用于定义流程的行业XML标准文件），
+创建这些流程定义的流程实例，执行查询，访问活动或历史流程实例、相关数据，以及更多。
+本节将逐步介绍各种概念和API，您可以在自己的开发机器上运行一些例子来熟悉 Flowable。</p>
 </div>
 <div class="paragraph">
-<p>Flowable is extremely flexible when it comes to adding it to your application/services/architecture. You can <em>embed</em> the engine in your application or service by including the Flowable library,
-which is available as a JAR. Since it&#8217;s a JAR, you can add it easily to any Java environment: Java SE; servlet containers, such as Tomcat or Jetty, Spring; Java EE servers, such as JBoss or WebSphere, and so on.
-Alternatively, you can use the Flowable REST API to communicate over HTTP. There are also several Flowable Applications (Flowable Modeler, Flowable Admin, Flowable IDM and Flowable Task) that offer out-of-the-box example UIs for working with processes and tasks.</p>
+<p>Flowable 可以非常灵活的添加到您的应用程序/服务/架构中。
+<em>引入</em> Flowable库(JAR)之后，您就可以在您的应用程序或服务中使用了。
+因为它是仅仅是一个JAR，您可以很容易地将它添加到任何Java环境：Java SE；servlet 容器，如Tomcat或Jetty，Spring；JavaEE服务器，如JBase/WebSphere等。
+或者，你也可以直接使用 Flowable REST API 通过HTTP进行通信。
+还有几个Flowable应用程序（Flowable 建模器、Flowable 管理员、Flowable 身份管理 和 Flowable 任务管理）提供开箱即用的用于处理流程和任务的UI示例。</p>
 </div>
 <div class="paragraph">
-<p>Common to all the ways of setting up Flowable is the core engine, which can be seen as a collection of services that expose APIs to manage and execute business processes.
-The various tutorials below start by introducing how to set up and use this core engine. The sections afterwards build upon the knowledge acquired in the previous sections.</p>
+<p>设置 Flowable 所有方法的共同之处是核心引擎，它可以看作是一个服务集合，暴露API来管理和执行业务流程。
+下面的教程会首先介绍如何设置和使用这个核心引擎，之后的章节对是建立在前面章节中获得知识的基础上。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The <a href="#getting.started.command.line">first section</a> shows how to run Flowable in the simplest way possible: a regular Java main using only Java SE. Many core concepts and APIs will be explained here.</p>
+<p><a href="#getting.started.command.line">第一节</a> 演示如何以最简单的方式运行 Flowable：一个只使用Java SE的常规Java主程序。这里将解释许多核心概念和API。</p>
 </li>
 <li>
-<p>The <a href="#getting.started.rest">section on the Flowable REST API</a> shows how to run and use the same API through REST.</p>
+<p><a href="#getting.started.command.line">Flowable REST API</a> 的部分展示了如何通过REST运行和使用相同的API。</p>
 </li>
 <li>
-<p>The <a href="#getting.started.flowable.app">section on the Flowable App</a>, will guide you through the basics of using the out-of-the-box example Flowable user interfaces.</p>
+<p><a href="#getting.started.flowable.app">Flowable App</a> 将指导您使用开箱即用的 Flowable 用户界面的基本知识。</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_flowable_and_activiti">2.2. Flowable and Activiti</h3>
+<h3 id="_flowable_和_activiti">2.2. Flowable 和 Activiti</h3>
 <div class="paragraph">
-<p>Flowable is a fork of Activiti (registered trademark of Alfresco). In all the following sections you’ll notice that the package names, configuration files, and so on, use <em>flowable</em>.</p>
+<p>Flowable是Activiti（Alfresco注册的商标）的一个分支。
+在下面的所有部分中，您可能会注意到包名称、配置文件等都使用了 <em>flowable</em> 。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="getting.started.command.line">2.3. Building a command-line application</h3>
+<h3 id="getting.started.command.line">2.3. 构建命令行应用程序</h3>
 <div class="sect3">
-<h4 id="_creating_a_process_engine">2.3.1. Creating a process engine</h4>
+<h4 id="_创建流程引擎">2.3.1. 创建流程引擎</h4>
 <div class="paragraph">
-<p>In this first tutorial we&#8217;re going to build a simple example that shows how to create a Flowable process engine, introduces some core concepts and shows how to work with the API.
-The screenshots show Eclipse, but any IDE works. We&#8217;ll use Maven to fetch the Flowable dependencies and manage the build, but likewise, any alternative also works (Gradle, Ivy, and so on).</p>
+<p>在第一个教程中，我们将构建一个简单的示例，演示如何创建一个 Flowable 流程引擎，介绍一些核心概念，以及如何使用API。
+虽然屏幕截图展示的是 Eclipse，但任何IDE都可以工作。
+我们将使用Maven获取 Flowable 的依赖项并管理构建，但是同样地，任何其他方法也可以工作（Gradle, Ivy等）。</p>
 </div>
 <div class="paragraph">
-<p>The example we&#8217;ll build is a simple <em>holiday request</em> process:</p>
+<p>这个例子我们将构建的是一个简单的 <em>假期申请</em> 流程：</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>the <em>employee</em> asks for a number of holidays</p>
+<p><em>员工</em> 请求几天的假期</p>
 </li>
 <li>
-<p>the <em>manager</em> either approves or rejects the request</p>
+<p><em>经理</em> 批准或拒绝这个请求</p>
 </li>
 <li>
-<p>we&#8217;ll mimic registering the request in some external system and sending out an email to the employee with the result</p>
+<p>我们将模拟在一些外部系统中注册请求，并将结果以E-mail的形式发送给员工。</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>First, we create a new Maven project through <em>File &#8594; New &#8594; Other &#8594; Maven Project</em></p>
+<p>首先，我们通过 <em>File &#8594; New &#8594; Other &#8594; Maven Project</em> 的方式创建一个Maven项目</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -500,7 +505,7 @@ The screenshots show Eclipse, but any IDE works. We&#8217;ll use Maven to fetch 
 </div>
 </div>
 <div class="paragraph">
-<p>In the next screen, we check <em><em>create a simple project (skip archetype selection)</em></em></p>
+<p>在下一张截图中，我们选择 <em><em>create a simple project (跳过maven结构脚手架部分)</em></em></p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -508,7 +513,7 @@ The screenshots show Eclipse, but any IDE works. We&#8217;ll use Maven to fetch 
 </div>
 </div>
 <div class="paragraph">
-<p>And fill in some <em>'Group Id'</em> and <em>'Artifact id'</em>:</p>
+<p>然后填写 <em>'Group Id'</em> 和 <em>'Artifact id'</em>:</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -516,21 +521,21 @@ The screenshots show Eclipse, but any IDE works. We&#8217;ll use Maven to fetch 
 </div>
 </div>
 <div class="paragraph">
-<p>We now have an empty Maven project, to which we&#8217;ll add two dependencies:</p>
+<p>现在我们就有了一个空的Maven项目，添加两个依赖:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The Flowable process engine, which will allow us to create a ProcessEngine object and access the Flowable APIs.</p>
+<p>Flowable 流程引擎, 它可以让我们创建流程引擎对象和调用 Flowable APIs.</p>
 </li>
 <li>
-<p>An in-memory database, H2 in this case, as the Flowable engine needs a database to store execution and historical data while running process instances.
-Note that the H2 dependency includes both the database <em>and</em> the driver. If you use another database (for example, PostgresQL, MySQL, and so on), you&#8217;ll need to add the specific database driver dependency.</p>
+<p>H2，一个内存型数据库，本例中 Flowable 引擎需要一个数据库来存储执行流程实例时的执行记录和历史数据。
+请注意H2依赖已经依赖包括了数据库 <em>和</em> 驱动。如果你使用的是其它的数据库(例如PostgresQL, MySQL等)，你可能需要额外添加一个驱动依赖。</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Add the following to your <em>pom.xml</em> file:</p>
+<p>将以下内容添加到您的 <em>pom.xml</em> 文件中:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -549,11 +554,11 @@ Note that the H2 dependency includes both the database <em>and</em> the driver. 
 </div>
 </div>
 <div class="paragraph">
-<p>If the dependent JARs are not automatically retrieved for some reason, you can right-click the project and select <em><em>Maven &#8594; Update Project'</em> to force a manual refresh (but this should not be needed, normally).
-In the project, under '<em>Maven Dependencies</em></em>, you should now see the <em>flowable-engine</em> and various other (transitive) dependencies.</p>
+<p>某些原因无法自动检测JAR时，可以右键点击项目，选择 <em><em>Maven &#8594; Update Project</em></em> 来强制手动刷新(但通常不需要这么做)。
+这样在项目中的 <em><em>Maven Dependencies</em></em> 下就可以看到 <em>flowable-engine</em> 的各种其它(可传递)依赖了。</p>
 </div>
 <div class="paragraph">
-<p>Create a new Java class and add a regular Java main method:</p>
+<p>创建一个JAVA类并添加一个标准的main方法:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -569,10 +574,11 @@ public class HolidayRequest {
 </div>
 </div>
 <div class="paragraph">
-<p>The first thing we need to do is to instantiate a <strong>ProcessEngine</strong> instance. This is a thread-safe object that you typically have to instantiate only once in an application.
-A <em>ProcessEngine</em> is created from a <strong>ProcessEngineConfiguration</strong> instance, which allows you to configure and tweak the settings for the process engine. Often, the <em>ProcessEngineConfiguration</em> is created
-using a configuration XML file, but (as we do here) you can also create it programmatically. The minimum configuration a <em>ProcessEngineConfiguration</em> needs
-is a JDBC connection to a database:</p>
+<p>首先我们要做的是实例化一个 <strong>ProcessEngine</strong> 实例。
+这是一个线程安全的对象，通常在你的应用中只需要实例化一次(单例)。
+从 <strong>ProcessEngineConfiguration</strong> 实例中创建一个实例 <em>ProcessEngine</em> ，它可以配置或调整流程引擎的配置。
+通常 <em>ProcessEngineConfiguration</em> 是使用XML配置文件创建的，但是(就像我们这里使用的)你也可以通过编程方式进行创建。
+<em>ProcessEngineConfiguration</em> 的配置最少需要一个连接数据库的配置:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -599,17 +605,33 @@ public class HolidayRequest {
 </div>
 </div>
 <div class="paragraph">
-<p>In the code above, on line 10, a <em>standalone</em> configuration object is created. The <em>'standalone'</em> here refers to the fact that the engine is created and used completely by itself (and not, for example,
-in a Spring environment, where you&#8217;d use the <em>SpringProcessEngineConfiguration</em> class instead). On lines 11 to 14, the JDBC connection parameters to an in-memory H2 database instance are passed.
-Important: note that such a database does not survive a JVM restart. If you want your data to be persistent, you&#8217;ll need to switch to a persistent database and switch the connection parameters accordingly.
-On line 15 we&#8217;re setting a flag to <em>true</em> to make sure that the database schema is created if it doesn&#8217;t already exist in the database pointed to by the JDBC parameters.
-Alternatively, Flowable ships with a set of SQL files that can be used to create the database schema with all the tables manually.</p>
+<p>在上面的代码中，第10行创建了一个 <em>独立</em> 的配置对象。
+这里的 <em>'独立'</em> 是指引擎完全由自己创建和使用（而不是在Spring环境中，使用 <em>SpringProcessEngineConfiguration</em> 这样的配置类进行创建）。
+在第11到14行中，将JDBC连接参数传递给内存中的H2数据库实例。</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+请注意，这样的数据库在JVM重启时不会存活(不会保留数据)。
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>The <strong>ProcessEngine</strong> object is then created using this configuration (line 17).</p>
+<p>如果想持久化数据，则需要切换到持久化数据库，并相应的切换连接参数。
+在15行，我们设置了一个参数为 <em>true</em> ，这样是为了确保在JDBC参数中指定的数据库结构不存在时创建数据库。
+另外，Flowable 也提供了一组SQL文件，其中包含所有的表结构，这样我们就可以手动创建数据库了。</p>
 </div>
 <div class="paragraph">
-<p>You can now run this. The easiest way in Eclipse is to right-click on the class file and select <em>Run As &#8594; Java Application</em>:</p>
+<p>然后使用这个配置创建 <strong>ProcessEngine</strong> 对象(17行)。</p>
+</div>
+<div class="paragraph">
+<p>现在可以启动它了。
+最简单的方式是在 Eclipse 中右键这个类然后选择 <em>Run As &#8594; Java Application</em>:</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -617,7 +639,7 @@ Alternatively, Flowable ships with a set of SQL files that can be used to create
 </div>
 </div>
 <div class="paragraph">
-<p>The application runs without problems, however, no useful information is shown in the console except a message stating that the logging has not been configured properly:</p>
+<p>应用会正常启动，但是，控制台中也没有显示什么有用的信息，仅有一条状态类消息，这是因为还没有配置日志:</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -625,7 +647,8 @@ Alternatively, Flowable ships with a set of SQL files that can be used to create
 </div>
 </div>
 <div class="paragraph">
-<p>Flowable uses <a href="http://www.slf4j.org/">SLF4J</a> as its logging framework internally. For this example, we&#8217;ll use the log4j logger over SLF4j, so add the following dependencies to the pom.xml file:</p>
+<p>Flowable 使用 <a href="http://www.slf4j.org/">SLF4J</a> 作为内部日志框架。
+在这个例子中，我们会使用 log4j 作为 SLF4j 的实现，所以把下面的依赖加入到 pom.xml 文件中:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -642,7 +665,8 @@ Alternatively, Flowable ships with a set of SQL files that can be used to create
 </div>
 </div>
 <div class="paragraph">
-<p>Log4j needs a properties file for configuration. Add a <em>log4j.properties</em> file to the <em>src/main/resources</em> folder with the following content:</p>
+<p>Log4j 需要一个配置文件来进行配置。
+将一个带有以下内容的 <em>log4j.properties</em> 文件添加到 <em>src/main/resources</em> 目录中:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -654,7 +678,7 @@ log4j.appender.CA.layout.ConversionPattern= %d{hh:mm:ss,SSS} [%t] %-5p %c %x - %
 </div>
 </div>
 <div class="paragraph">
-<p>Rerun the application. You should now see informative logging about the engine booting up and the database schema being created in the database:</p>
+<p>重新运行应用程序。现在，您就可以看到有关启动引擎和创建数据库结构的日志信息了：</p>
 </div>
 <div class="imageblock" style="text-align: center">
 <div class="content">
@@ -662,11 +686,11 @@ log4j.appender.CA.layout.ConversionPattern= %d{hh:mm:ss,SSS} [%t] %-5p %c %x - %
 </div>
 </div>
 <div class="paragraph">
-<p>We&#8217;ve now got a process engine booted up and ready to go. Time to feed it a process!</p>
+<p>现在我们已经启动了一个流程引擎并准备就绪。是时候给它提供一个流程了！</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_deploying_a_process_definition">2.3.2. Deploying a process definition</h4>
+<h4 id="_部署流程定义">2.3.2. 部署流程定义</h4>
 <div class="paragraph">
 <p>The process we&#8217;ll build is a very simple holiday request process. The Flowable engine expects processes to be defined in the BPMN 2.0 format, which is an XML standard that is widely accepted in the industry.
 In Flowable terminology, we speak about this as a <strong>process definition</strong>. From a <em>process definition</em>, many <strong>process instances</strong> can be started. Think of the <em>process definition</em> as the blueprint for many executions
@@ -1128,7 +1152,7 @@ externalSystemCall took 1 milliseconds</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_deploying_a_process_definition_2">2.4.2. Deploying a process definition</h4>
+<h4 id="_deploying_a_process_definition">2.4.2. Deploying a process definition</h4>
 <div class="paragraph">
 <p>The first step is to deploy a process definition. With the REST API, this is done by uploading a .bpmn20.xml file (or .zip file for multiple process definitions) as <em>multipart/formdata</em>:</p>
 </div>
