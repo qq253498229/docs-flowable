@@ -1,4 +1,4 @@
-= Flowable DOCS (v 6.4.1)
+= Flowable DOCS 中文 (v 6.4.1)
 :doctype: book
 :docinfodir: ../base
 :docinfo1: header
