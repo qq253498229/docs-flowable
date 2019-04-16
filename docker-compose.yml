@@ -8,10 +8,10 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/flowable
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
-      - FLOWABLE.REST.APP.ADMIN.USER-ID=rest-admin
-      - FLOWABLE.REST.APP.ADMIN.PASSWORD=test
-      - FLOWABLE.REST.APP.ADMIN.FIRST-NAME=Rest
-      - FLOWABLE.REST.APP.ADMIN.LAST-NAME=Admin
+      - FLOWABLE_REST_APP_ADMIN_USER-ID=rest-admin
+      - FLOWABLE_REST_APP_ADMIN_PASSWORD=test
+      - FLOWABLE_REST_APP_ADMIN_FIRST-NAME=Rest
+      - FLOWABLE_REST_APP_ADMIN_LAST-NAME=Admin
     ports:
       - 9977:9977
     entrypoint: ["./wait-for-something.sh", "mysql", "3306", "MySQL", "java", "-jar", "app.war"]
@@ -25,8 +25,8 @@ services:
       - SPRING_DATASOURCE_PASSWORD=root
       - FLOWABLE_COMMON_APP_IDM-URL=http://idm:8080/flowable-idm
       - FLOWABLE_COMMON_APP_IDM-REDIRECT-URL=http://localhost:8080/flowable-idm
-      - FLOWABLE_COMMON_APP_IDM-ADMIN.USER=admin
-      - FLOWABLE_COMMON_APP_IDM-ADMIN.PASSWORD=test
+      - FLOWABLE_COMMON_APP_IDM-ADMIN_USER=admin
+      - FLOWABLE_COMMON_APP_IDM-ADMIN_PASSWORD=test
       - FLOWABLE_MODELER_APP_DEPLOYMENT-API-URL=http://task:9999/flowable-task/app-api
     ports:
       - 8888:8888
@@ -41,8 +41,8 @@ services:
       - SPRING_DATASOURCE_PASSWORD=root
       - FLOWABLE_COMMON_APP_IDM-URL=http://idm:8080/flowable-idm
       - FLOWABLE_COMMON_APP_IDM-REDIRECT-URL=http://localhost:8080/flowable-idm
-      - FLOWABLE_COMMON_APP_IDM-ADMIN.USER=admin
-      - FLOWABLE_COMMON_APP_IDM-ADMIN.PASSWORD=test
+      - FLOWABLE_COMMON_APP_IDM-ADMIN_USER=admin
+      - FLOWABLE_COMMON_APP_IDM-ADMIN_PASSWORD=test
     ports:
       - 9999:9999
     entrypoint: ["./wait-for-something.sh", "mysql", "3306", "MySQL", "java", "-jar", "app.war"]
@@ -67,8 +67,8 @@ services:
       - SPRING_DATASOURCE_PASSWORD=root
       - FLOWABLE_COMMON_APP_IDM-URL=http://idm:8080/flowable-idm
       - FLOWABLE_COMMON_APP_IDM-REDIRECT-URL=http://localhost:8080/flowable-idm
-      - FLOWABLE_COMMON_APP_IDM-ADMIN.USER=admin
-      - FLOWABLE_COMMON_APP_IDM-ADMIN.PASSWORD=test
+      - FLOWABLE_COMMON_APP_IDM-ADMIN_USER=admin
+      - FLOWABLE_COMMON_APP_IDM-ADMIN_PASSWORD=test
       - FLOWABLE_ADMIN_APP_SERVER-CONFIG_PROCESS_SERVER-ADDRESS=http://task
       - FLOWABLE_ADMIN_APP_SERVER-CONFIG_PROCESS_PORT=9999
       - FLOWABLE_ADMIN_APP_SERVER-CONFIG_PROCESS_CONTEXT-ROOT=flowable-task
@@ -104,7 +104,7 @@ services:
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     ports:
       - 3306:3306
-  adminer:
-    image: adminer:latest
-    ports:
-      - 8081:8080
+#  adminer:
+#    image: adminer:latest
+#    ports:
+#      - 8081:8080
