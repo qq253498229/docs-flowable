@@ -1,0 +1,103 @@
+{
+  "id": "ee152621-5fea-11e9-8c95-0242ac1b0005",
+  "name": "入职表单",
+  "key": "induction_form",
+  "version": 1,
+  "url": "http://localhost:9977/flowable-rest/form-api/form/model",
+  "fields": [
+    {
+      "fieldType": "FormField",
+      "id": "name",
+      "name": "姓名",
+      "type": "text",
+      "value": null,
+      "required": true,
+      "readOnly": false,
+      "overrideId": true,
+      "placeholder": null,
+      "params": {
+        "minLength": "2",
+        "maxLength": "64"
+      },
+      "layout": null
+    },
+    {
+      "fieldType": "OptionFormField",
+      "id": "gender",
+      "name": "性别",
+      "type": "radio-buttons",
+      "value": "男",
+      "required": true,
+      "readOnly": false,
+      "overrideId": true,
+      "placeholder": null,
+      "layout": null,
+      "optionType": null,
+      "hasEmptyValue": null,
+      "options": [
+        {
+          "id": null,
+          "name": "男"
+        },
+        {
+          "id": null,
+          "name": "女"
+        }
+      ],
+      "optionsExpression": null
+    },
+    {
+      "fieldType": "OptionFormField",
+      "id": "education",
+      "name": "学历",
+      "type": "dropdown",
+      "value": "高中",
+      "required": true,
+      "readOnly": false,
+      "overrideId": true,
+      "placeholder": null,
+      "layout": null,
+      "optionType": null,
+      "hasEmptyValue": true,
+      "options": [
+        {
+          "id": null,
+          "name": "其它"
+        },
+        {
+          "id": null,
+          "name": "本科"
+        },
+        {
+          "id": null,
+          "name": "硕士"
+        },
+        {
+          "id": null,
+          "name": "博士"
+        },
+        {
+          "id": null,
+          "name": "高中"
+        }
+      ],
+      "optionsExpression": null
+    },
+    {
+      "fieldType": "FormField",
+      "id": "picture",
+      "name": "照片",
+      "type": "upload",
+      "value": null,
+      "required": false,
+      "readOnly": false,
+      "overrideId": true,
+      "placeholder": null,
+      "params": {
+        "multiple": true
+      },
+      "layout": null
+    }
+  ],
+  "outcomes": []
+}

@@ -328,11 +328,18 @@ ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQ
 System.out.println("Found process definition : " + processDefinition.getName());
 ----
 
-==== Starting a process instance
+==== 开启流程实例
 
-We now have the process definition _deployed_ to the process engine, so _process instances_ can be started using this _process definition_ as a 'blueprint'.
 
-To start the process instance, we need to provide some initial _process variables_. Typically, you'll get these through a form that is presented to the user or through a REST API when a process is triggered by something automatic. In this example, we'll keep it simple and use the java.util.Scanner class to simply input some data on the command line:
+We now have the process definition _deployed_ to the process engine,
+so _process instances_ can be started using this _process definition_ as a 'blueprint'.
+现在我们已经在流程引擎中 _部署_ 了流程定义，这时候就可以使用流程定义作为 '蓝图' 来开启 _流程实例_ 了。
+
+To start the process instance, we need to provide some initial _process variables_.
+为了开启流程实例，我们需要提供一些初始化的 _流程参数_ 。
+Typically, you'll get these through a form that is presented to the user or through a REST API when a process is triggered by something automatic.
+
+In this example, we'll keep it simple and use the java.util.Scanner class to simply input some data on the command line:
 
 [source,java,linenums]
 ----
