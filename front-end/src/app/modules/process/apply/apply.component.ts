@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
@@ -17,7 +17,8 @@ export class ApplyComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {
   }
 
@@ -36,6 +37,8 @@ export class ApplyComponent implements OnInit {
   submit() {
     this.http.post('/api/process/' + this.result.id, this.param).subscribe(res => {
       console.log(res);
+      alert('申请成功');
+      this.router.navigate(['/process']);
     });
   }
 }

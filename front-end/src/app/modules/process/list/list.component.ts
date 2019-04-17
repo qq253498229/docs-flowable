@@ -12,6 +12,10 @@ export class ListComponent implements OnInit {
     list: []
   };
 
+  param = {
+    userId: ''
+  };
+
   constructor(
     private http: HttpClient,
     private router: Router
@@ -19,6 +23,10 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
+
+  }
+
+  getData() {
     this.http.get<any[]>('/api/process').subscribe(res => {
       this.result.list = res;
     });
