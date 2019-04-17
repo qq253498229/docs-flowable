@@ -1,3 +1,18 @@
-<p>
-  process list page works!
-</p>
+<h1>流程列表</h1>
+
+<table border="1">
+  <tr>
+    <th>流程名称</th>
+    <th>流程key</th>
+    <th>版本</th>
+    <th>操作</th>
+  </tr>
+  <tr *ngFor="let item of result.list">
+    <td>{{item['name']}}</td>
+    <td>{{item['key']}}</td>
+    <td>{{item['version']}}</td>
+    <td>
+      <a (click)="option(item['id'])" href="javascript:void(0)">进入</a>
+    </td>
+  </tr>
+</table>

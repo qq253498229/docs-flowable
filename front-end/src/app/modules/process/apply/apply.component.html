@@ -1,0 +1,31 @@
+<h1>
+  {{result.form['name']}}
+</h1>
+<form #form="ngForm">
+  <table border="1">
+    <tr *ngFor="let item of result.form['fields']">
+      <td>{{item['name']}}</td>
+      <td *ngIf="item['type'] === 'text'">
+        <input type="text" [name]="item['id']" [(ngModel)]="param[item['id']]" [minlength]="item['params']['minLength']"
+               [maxLength]="item['params']['maxLength']" [required]="item['required']" [readOnly]="item['readonly']">
+      </td>
+      <td *ngIf="item['type'] === 'integer'">
+        <input type="number" [name]="item['id']" [(ngModel)]="param[item['id']]" [required]="item['required']"
+               [readOnly]="item['readonly']" [pattern]="item['params']['regexPattern']">
+      </td>
+      <td *ngIf="item['type'] === 'multi-line-text'">
+        <textarea [name]="item['id']" [(ngModel)]="param[item['id']]" [required]="item['required']"
+                  [readOnly]="item['readonly']"></textarea>
+      </td>
+
+    </tr>
+    <tr>
+      <td>
+        <button (click)="submit()" [disabled]="!form.form.valid">提交</button>
+      </td>
+      <td>
+        <button (click)="back()">返回</button>
+      </td>
+    </tr>
+  </table>
+</form>

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -7,16 +8,23 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  result = {
+    list: []
+  };
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {
   }
 
   ngOnInit() {
-    this.http.get('/api/process').subscribe(res => {
-      console.log(res);
+    this.http.get<any[]>('/api/process').subscribe(res => {
+      this.result.list = res;
     });
   }
 
+  option(id: any) {
+    this.router.navigate(['/process', id]);
+  }
 }
