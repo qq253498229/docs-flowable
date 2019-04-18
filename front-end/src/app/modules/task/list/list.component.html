@@ -1,12 +1,11 @@
 <h1>任务列表</h1>
 
 账号名：
-<select [(ngModel)]="param.userId">
+<select [(ngModel)]="param.userId" (change)="getData()">
   <option *ngFor="let item of result.users" [value]="item['id']">
     {{item['persistentState']['firstName']}} {{item['persistentState']['lastName']}}
   </option>
 </select>
-<button (click)="getDate()">查询</button>
 
 <table border="1">
   <tr>

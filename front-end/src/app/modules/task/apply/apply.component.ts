@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
+import {CommonService} from '../../../common/common.service';
 
 @Component({
   selector: 'app-apply',
@@ -9,20 +10,26 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ApplyComponent implements OnInit {
   result = {
-    id: ''
+    id: '',
+    form: {}
   };
 
   constructor(
     private http: HttpClient,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private common: CommonService
   ) {
   }
 
   ngOnInit() {
     this.result.id = this.route.snapshot.paramMap.get('id');
-
-    this.http.get('/api/task/taskInfo/' + this.result.id).subscribe(res => {
-      console.log(res);
+    this.http.get('/api/form/getFormByTaskId/' + this.result.id).subscribe(res => {
+      this.common.log(res);
+      this.result.form = res;
+    });
+    this.http.get('/api/task/variables/' + this.result.id).subscribe(res => {
+      this.common.log(res);
+      // this.result.form = res;
     });
   }
 
