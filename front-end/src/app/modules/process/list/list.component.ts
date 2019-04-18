@@ -23,7 +23,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.getData();
   }
 
   getData() {
