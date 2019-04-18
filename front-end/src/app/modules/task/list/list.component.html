@@ -10,12 +10,10 @@
 <table border="1">
   <tr>
     <th>任务名称</th>
-    <th>流程id</th>
     <th>操作</th>
   </tr>
   <tr *ngFor="let item of result.list">
     <td>{{item['name']}}</td>
-    <td>{{item['processInstanceId']}}</td>
     <td>
       <a *ngIf="!item['assignee']" href="javascript:void(0);" (click)="claim(item['id'])">领取</a>
       <a *ngIf="item['assignee']" href="javascript:void(0);" (click)="operate(item['id'])">操作</a>

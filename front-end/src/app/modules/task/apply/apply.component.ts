@@ -27,10 +27,6 @@ export class ApplyComponent implements OnInit {
       this.common.log(res);
       this.result.form = res;
     });
-    this.http.get('/api/task/variables/' + this.result.id).subscribe(res => {
-      this.common.log(res);
-      // this.result.form = res;
-    });
   }
 
 }

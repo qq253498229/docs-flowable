@@ -1,9 +1,6 @@
 package com.example.demoflowable.task;
 
-import org.flowable.engine.ProcessEngine;
-import org.flowable.engine.RuntimeService;
-import org.flowable.engine.TaskService;
-import org.flowable.engine.runtime.ProcessInstance;
+import com.example.demoflowable.process.ProcessService;
 import org.flowable.task.api.Task;
 import org.flowable.task.service.impl.persistence.entity.TaskEntityImpl;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +20,12 @@ import static org.springframework.http.ResponseEntity.ok;
 @RestController
 @RequestMapping("/task")
 public class TaskController {
+
     @Resource
-    private ProcessEngine processEngine;
+    private TaskService taskService;
+
+    @Resource
+    private ProcessService processService;
 
     /**
      * 查看自己的任务
@@ -33,8 +34,7 @@ public class TaskController {
      */
     @GetMapping("/{userId}")
     public ResponseEntity<List<Object>> list(@PathVariable String userId) {
-        TaskService taskService = processEngine.getTaskService();
-        List<Task> list = taskService.createTaskQuery().taskCandidateOrAssigned(userId).list();
+        List<Task> list = taskService.getTaskListByUserId(userId);
         List<Object> collect = list.stream().map(s -> {
             Map<String, Object> persistentState = (HashMap) ((TaskEntityImpl) s).getPersistentState();
             persistentState.put("id", s.getId());
@@ -44,26 +44,20 @@ public class TaskController {
     }
 
     /**
+     * 获取流程参数
+     */
+    @GetMapping("/variables/{taskId}")
+    public ResponseEntity variables(@PathVariable String taskId) {
+        Map<String, Object> variables = processService.getProcessVariablesByTaskId(taskId);
+        return ok(variables);
+    }
+
+    /**
      * 领取任务
-     *
-     * @return
      */
     @PostMapping("/claim/{userId}/{taskId}")
     public ResponseEntity claim(@PathVariable String userId, @PathVariable String taskId) {
-        TaskService taskService = processEngine.getTaskService();
         taskService.claim(taskId, userId);
         return ok().build();
-    }
-
-    @GetMapping("/taskInfo/{taskId}")
-    public ResponseEntity taskInfo(@PathVariable String taskId) {
-        TaskService taskService = processEngine.getTaskService();
-        Task task = taskService.createTaskQuery().taskId(taskId).singleResult();
-        Map<String, Object> taskMap = (HashMap) ((TaskEntityImpl) task).getPersistentState();
-        taskMap.put("id", task.getId());
-
-        RuntimeService runtimeService = processEngine.getRuntimeService();
-        ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(task.getProcessInstanceId()).singleResult();
-        return ok(taskMap);
     }
 }

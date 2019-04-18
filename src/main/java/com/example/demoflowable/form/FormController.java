@@ -1,8 +1,5 @@
 package com.example.demoflowable.form;
 
-import org.flowable.engine.ProcessEngine;
-import org.flowable.form.api.FormModel;
-import org.flowable.form.engine.FormEngine;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,14 +17,15 @@ import static org.springframework.http.ResponseEntity.ok;
 @RequestMapping("/form")
 public class FormController {
     @Resource
-    private FormEngine formEngine;
-    @Resource
-    private ProcessEngine processEngine;
+    private CustomFormService customFormService;
 
     @GetMapping("/getFormByProcessDefId/{processDefinitionId}")
-    public ResponseEntity get(@PathVariable String processDefinitionId) {
-        String startFormKey = processEngine.getFormService().getStartFormKey(processDefinitionId);
-        FormModel formModel = formEngine.getFormRepositoryService().getFormModelByKey(startFormKey).getFormModel();
-        return ok(formModel);
+    public ResponseEntity getFormByProcessDefId(@PathVariable String processDefinitionId) {
+        return ok(customFormService.getFormModelByProcessDefinitionId(processDefinitionId));
+    }
+
+    @GetMapping("/getFormByTaskId/{taskId}")
+    public ResponseEntity getFormByTaskId(@PathVariable String taskId) {
+        return ok(customFormService.getFormModelByTaskId(taskId));
     }
 }

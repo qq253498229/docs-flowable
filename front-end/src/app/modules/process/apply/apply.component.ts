@@ -26,6 +26,7 @@ export class ApplyComponent implements OnInit {
 
   ngOnInit() {
     this.result.id = this.route.snapshot.paramMap.get('id');
+    console.log(this.result.id);
     this.http.get('/api/form/getFormByProcessDefId/' + this.result.id).subscribe(res => {
       this.common.log(res);
       this.result.form = res;

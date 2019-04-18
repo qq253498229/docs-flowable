@@ -48,6 +48,7 @@ export class ListComponent implements OnInit {
     this.http.post('/api/task/claim/' + this.param.userId + '/' + id, null).subscribe(res => {
       this.common.log(res);
       alert('领取成功');
+      this.getData();
     });
   }
 }
